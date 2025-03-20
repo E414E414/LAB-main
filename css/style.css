@@ -695,6 +695,18 @@ figure.effect-bubba:hover p {
 	color: #ffffff;
 }
 
+.team-image {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* 讓容器維持正方形*/
+    overflow: hidden;
+}
+
+.team-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
 .advisor-item {
 	text-align: center;
 	margin: 0px 0px 30px;
