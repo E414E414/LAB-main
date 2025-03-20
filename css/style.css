@@ -618,7 +618,8 @@ figure.effect-bubba:hover p {
     margin: 15px 7px 0 7px;
     background: #d6d6d6;
     display: block;
-    -webkit-backface-visibility: visible;
+	-webkit-backface-visibility: visible;
+	backface-visibility: visible;
     -webkit-transition: opacity 200ms ease;
     -moz-transition: opacity 200ms ease;
     -ms-transition: opacity 200ms ease;
@@ -1093,17 +1094,20 @@ and (max-width : 480px) {
 	height: 3px;
 	background: #818181;
 	-webkit-transform: scaleX(0);
+	transform: scaleX(0);
 	transition: all 0.2s ease;
   }
   .wrap-card:before {
 	top: 0;
 	left: 0;
+	transform-origin: 0 0;
 	-webkit-transform-origin: 0 0;
   }
   .wrap-card:after {
 	bottom: 0;
 	left: 0;
 	-webkit-transform-origin: 100% 0;
+	transform-origin: 100% 0;
   }
   .wrap-card:hover {
 	box-shadow: 0px 4px 10px #818181;
@@ -1113,6 +1117,7 @@ and (max-width : 480px) {
   .wrap-card:hover:after,
   .wrap-card:hover:before {
 	-webkit-transform: scaleX(1);
+	transform: scaleX(1);
   }
  	.card {
 	background: #ffffff;
@@ -1130,21 +1135,25 @@ and (max-width : 480px) {
 	height: 100%;
 	background: #818181;
 	-webkit-transform: scaleY(0);
+	transform: scaleY(0);
 	transition: all 0.2s ease 0.2s;
   }
   .card:before {
 	top: 0;
 	left: 0;
 	-webkit-transform-origin: 0 100%;
+	transform-origin: 0 100%;
   }
   .card:after {
 	top: 0;
 	right: 0;
 	-webkit-transform-origin: 0 0;
+	transform-origin: 0 0;
   }
   .card:hover:after,
   .card:hover:before {
 	-webkit-transform: scaleY(1);
+	transform: scaleY(1);
   }
 
  	/* .card {
