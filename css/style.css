@@ -64,7 +64,7 @@ color: #B1B1B1;
 }
 
 a:hover, a:focus, a:active, a.active {
-	color: #fec503;
+	color: #b0b3b0;
 }
 a, a:hover, a:focus, a:active, a.active {
 	outline: 0;
@@ -660,7 +660,7 @@ figure.effect-bubba:hover p {
    }
    
    .team-item .team-position {
-	color: #cfcccf;
+	color: #333231;
 	font-size: 24px;
 	margin: 15px 0 10px;
 	text-transform: uppercase;
@@ -677,22 +677,22 @@ figure.effect-bubba:hover p {
    
 	.team-item:hover{
 	 margin-bottom: 20px;
-	 background-color: #333231;
-	 border-bottom: 1rem solid #23ad21;
-	 box-shadow: 0px 2px 5px #9b9b9b;
+	 background-color:	#E5E4E2;
+	 border-bottom: 1rem solid #6A9CDB;
+	 box-shadow: 0px 2px 5px #b0b3b0;
 	}
 
 .team-item:hover h3{
-	color: #23ad21;
+	color: #1D4F8D;
 }
 .team-item:hover h4{
-	color: #fed74f;
+	color: #808080;
 }
 .team-item:hover div{
-	color: grey;
+	color: #1D4F8D;
 }
 .team-item:hover p{
-	color: #ffffff;
+	color: #808080;
 }
 
 .team-image {
