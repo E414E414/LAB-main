@@ -929,7 +929,7 @@ footer p a {
 }
 
 footer p a span {
-	color: #23AD21;
+	color: #1D4F8D;
 	font-size: 10px;
 	letter-spacing: 1px;
 	font-weight: 700;
@@ -1018,12 +1018,12 @@ font-size: 11px;
 	background-image: none;
 	border: 1px solid transparent;
 	border-radius: 4px;
-	background-color: #23AD21;
+	background-color: #3E77E2;
 }
 
 .btn-xl {
 color: #fff;
-    background-color: #23AD21;
+    background-color: #3E77E2;
     /* border-color: #726FB9; */
     font-family: "Open Sans",sans-serif;
     text-transform: uppercase;
