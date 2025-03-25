@@ -144,7 +144,7 @@ section ul li:before {
 	padding: 0px;
 }
 .navbar-default .navbar-brand:hover,.navbar-default .navbar-brand:focus,.navbar-default .navbar-brand:active,.navbar-default .navbar-brand.active {
-	color: #fec503
+	color: #1D4F8D
 }
 .navbar-default .navbar-collapse {
 	border-color: rgba(255,255,255,.02)
@@ -167,18 +167,18 @@ section ul li:before {
 	color:rgb(0, 0, 0);
 }
 .navbar-default .nav li a:hover,.navbar-default .nav li a:focus {
-	color: #fed136;
+	color: #1D4F8D;
 	outline: 0
 }
 
 .navbar-default .navbar-nav>.active>a {
 	border-radius: 0;
 	color: #fff;
-	background-color: #fed136
+	background-color: #1D4F8D
 }
 .navbar-default .navbar-nav>.active>a:hover,.navbar-default .navbar-nav>.active>a:focus {
 	color: #fff;
-	background-color: #fec503
+	background-color: #1D4F8D
 }
 
 @media (min-width:768px) {
