@@ -150,14 +150,14 @@ section ul li:before {
 	border-color: rgba(255,255,255,.02)
 }
 .navbar-default .navbar-toggle {
-	background-color: #fed136;
-	border-color: #fed136
+	background-color: #1D4F8D;
+	border-color: #1D4F8D
 }
 .navbar-default .navbar-toggle .icon-bar {
 	background-color: #fff
 }
 .navbar-default .navbar-toggle:hover,.navbar-default .navbar-toggle:focus {
-	background-color: #fed136
+	background-color: #808080
 }
 .navbar-default .nav li a {
 	font-family: "Roboto",sans-serif;
@@ -328,7 +328,7 @@ header .intro-text .intro-heading {
 	margin-left: -20px;
 	text-align: center;
 	position: absolute;
-	background: #23AD21;
+	background: #1D4F8D;
 }
 
 .dark-bg .section-title h2 {
