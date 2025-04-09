@@ -93,6 +93,7 @@ ul {
 ul li {
     list-style: none;
     padding-bottom: 10px;
+	padding-left: 10px;
     font-family: 'Open Sans', sans-serif;
     font-size: 18px;
     font-weight: 500;
@@ -101,15 +102,42 @@ ul li {
     color: #000000;
 }
 
-section ul li:before {
-	font-family: FontAwesome;
-	font-weight: normal;
-	font-style: normal;
-	display: inline-block;
-	text-decoration: inherit;
-	content: "\f105";
-	padding-right: 7px;
+.event-list{
+	padding-top: 0px;
+	padding-left: 3em;
+	font-size: 18px;
+}
+
+.event-list li{
+	padding-left: 0px;
+	list-style-type: disc;
+	font-size: 0.9em;
+	line-height: 1.6;
+}
+
+details summary {
+	font-weight: bold;
+	font-size: 1em;
+	cursor: pointer;
+	position: relative;
+	padding-left: 1.5em;
+}
+
+details summary::before {
+	content: "\f105"; 
+	font-family: "FontAwesome";
+	font-size: 18px;
 	color: #1D4F8D;
+	position: absolute;
+	padding-bottom: 10px;
+	left: 0.5em;
+	top: 50%;
+	transform: translateY(-50%);
+	transition: transform 0.3s ease;
+}
+
+details[open] summary::before {
+	transform: translateY(-50%) rotate(90deg); 
 }
 
 /*--------------------
