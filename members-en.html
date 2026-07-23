@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lab Members | Lab. for Human-Computer Interaction and Smart Technology · NKUST</title>
+<meta name="description" content="Principal investigator and research team of the Lab for Human-Computer Interaction and Smart Technology, organized by co-PIs, Ph.D. students, master's students, undergraduate capstone students, and alumni.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  /* ---- members page-specific styles (extends the shared stylesheet) ---- */
+  .member-stats { display:grid; grid-template-columns:repeat(6,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden; margin:20px 0 8px; }
+  .member-stat { background:#fff; padding:20px 14px; text-align:center; }
+  .member-stat .num { display:block; font-family:var(--mono); font-size:clamp(20px,2.6vw,28px); font-weight:700; }
+  .member-stat .lbl { display:block; margin-top:4px; font-size:12.5px; color:var(--ink-soft); }
+  .advisor-link-hint { display:block; margin-top:10px; font-size:13px; color:var(--ink-soft); text-decoration:underline; }
+  @media (max-width:820px){ .member-stats{ grid-template-columns:repeat(3,1fr); } }
+  @media (max-width:480px){ .member-stats{ grid-template-columns:repeat(2,1fr); } }
+
+  /* ---- members overview card ---- */
+  .mo-card { position:relative; border:1px solid var(--line); border-radius:16px; padding:30px 32px 26px; background:#fff; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,.04); }
+  .mo-card::before { content:""; position:absolute; top:0; left:0; right:0; height:5px; background:linear-gradient(90deg,#2F6F6B,#5B9E99,#E2762E); }
+  .mo-head { display:flex; flex-wrap:wrap; gap:20px; justify-content:space-between; align-items:flex-start; }
+  .mo-eyebrow { display:flex; align-items:center; gap:8px; font-size:12px; letter-spacing:.08em; color:var(--ink-faint); font-family:var(--mono); margin:0 0 6px; }
+  .mo-eyebrow::before { content:""; width:18px; height:2px; background:#2F6F6B; display:inline-block; }
+  .mo-title { margin:0 0 6px; font-size:26px; }
+  .mo-lede { margin:0; color:var(--ink-soft); font-size:14px; max-width:46ch; }
+  .mo-stats { display:grid; grid-template-columns:repeat(4,minmax(84px,1fr)); gap:10px; }
+  .mo-stat { position:relative; background:#f5f6f8; border-radius:12px; padding:14px 16px; overflow:hidden; text-align:left; }
+  
+  .mo-stat .num { position:relative; display:block; font-family:var(--mono); font-weight:700; font-size:26px; color:#2F6F6B; }
+  .mo-stat .lbl { position:relative; display:block; margin-top:2px; font-size:11px; letter-spacing:.04em; color:var(--ink-soft); text-transform:uppercase; }
+
+  /* ---- category pill nav ---- */
+  .cat-jump { display:flex; flex-wrap:wrap; gap:8px; background:#f5f6f8; border-radius:12px; padding:8px; }
+  .cat-jump a { padding:9px 16px; border-radius:8px; font-size:14px; color:var(--ink-soft); text-decoration:none; }
+  .cat-jump a:hover { background:#fff; color:#2F6F6B; box-shadow:0 1px 2px rgba(0,0,0,.06); }
+  .cat-jump a[aria-current="true"] { background:#fff; color:#2F6F6B; font-weight:700; box-shadow:0 1px 2px rgba(0,0,0,.06); }
+
+  /* ---- advisor card ---- */
+  .advisor-card { border:1px solid var(--line); border-radius:16px; padding:30px 32px; background:#fff; }
+  .advisor-card-head { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; margin-bottom:20px; }
+  .advisor-btn { flex:none; padding:9px 18px; border-radius:999px; border:1px solid var(--line); font-size:13px; color:#2F6F6B; text-decoration:none; white-space:nowrap; }
+  .advisor-btn:hover { background:#2F6F6B; color:#fff; border-color:#2F6F6B; }
+  .advisor-body { display:flex; gap:28px; flex-wrap:wrap; }
+  .advisor-photo { width:180px; height:220px; border-radius:12px; overflow:hidden; background:#eee; flex:none; }
+  .advisor-photo img { width:100%; height:100%; object-fit:cover; display:block; }
+  .advisor-detail { flex:1; min-width:240px; }
+  .advisor-detail h3 { margin:0 0 2px; font-size:22px; }
+  .advisor-en { color:var(--ink-soft); font-size:14px; margin:0 0 12px; }
+  .advisor-contact { display:flex; flex-wrap:wrap; gap:16px; font-size:13.5px; color:var(--ink-soft); margin-bottom:10px; }
+  .advisor-contact a { color:var(--ink-soft); text-decoration:underline; }
+  .advisor-detail-link { display:inline-block; margin-bottom:18px; font-size:13.5px; text-decoration:underline; color:#2F6F6B; }
+  .advisor-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:22px; }
+  .advisor-tag { padding:5px 12px; border-radius:999px; background:#f5f6f8; font-size:12.5px; color:var(--ink-soft); }
+  .advisor-interests-title { font-size:12px; letter-spacing:.06em; color:var(--ink-faint); text-transform:uppercase; margin:0 0 12px; }
+  .advisor-interests { display:grid; grid-template-columns:1fr 1fr; gap:10px 24px; margin:0; padding:0; list-style:none; }
+  .advisor-interests li { font-size:14px; padding-left:14px; position:relative; }
+  .advisor-interests li::before { content:"·"; position:absolute; left:0; color:#E2762E; font-weight:700; }
+  .advisor-interests .en { display:block; font-size:12px; color:var(--ink-faint); }
+  @media (max-width:640px){ .advisor-interests{ grid-template-columns:1fr; } .mo-stats{ grid-template-columns:repeat(2,1fr); } }
+
+</style>
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site">
+  <div class="nav-row">
+    <a class="brand" href="index-en.html">
+      <img class="brand-logo" src="assets/nkust-logo.png" alt="NKUST logo">
+      <span class="brand-text">
+        <span class="brand-zh">Lab. for Human-Computer Interaction and Smart Technology</span>
+        <span class="brand-en">National Kaohsiung University of Science and Technology</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+    <nav class="primary" id="primary-nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="index-en.html">Home</a></li>
+        <li><a href="about-en.html">About</a></li>
+        <li><a href="news-en.html">News</a></li>
+        <li><a href="activities-en.html">Activities</a></li>
+        <li><a href="videos-en.html">Videos</a></li>
+        <li><a href="achievements-en.html">Achievements</a></li>
+        <li><a href="members-en.html" aria-current="page">Members</a></li>
+        <li><a href="faq-en.html">FAQ</a></li>
+        <li class="nav-lang"><a href="members.html" lang="zh-Hant">中文</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="breadcrumb"><a href="index-en.html">Home</a> / Lab Members</p>
+      <p class="eyebrow">LAB MEMBERS</p>
+      <h1 class="page-title">Lab Members</h1>
+      <p class="page-lede">Where First Campus talent converges</p>
+      <nav class="cat-jump" id="cat-jump" aria-label="Jump to a member category">
+        <a href="#overview">Overview</a>
+        <a href="#advisor">Advisor</a>
+        <a href="#cochair">Co-PIs</a>
+        <a href="#phd">Ph.D.</a>
+        <a href="#master">Master's</a>
+        <a href="#undergrad">Undergrad</a>
+        <a href="#alumni">Alumni</a>
+      </nav>
+    </div>
+  </section>
+
+  <section id="overview" aria-labelledby="overview-title">
+    <div class="wrap">
+      <div class="mo-card">
+        <div class="mo-head">
+          <div>
+            <p class="mo-eyebrow">MEMBERS OVERVIEW</p>
+            <h2 class="mo-title" id="overview-title">Members Overview</h2>
+            <p class="mo-lede">Principal investigator, co-PI, Ph.D./master's students, undergraduate capstone students, and alumni across the years.</p>
+          </div>
+          <div class="mo-stats" role="group" aria-label="Lab member statistics">
+            <div class="mo-stat"><span class="num">26</span><span class="lbl">Members</span></div>
+            <div class="mo-stat"><span class="num">24</span><span class="lbl">Students</span></div>
+            <div class="mo-stat"><span class="num">1</span><span class="lbl">Co-PI</span></div>
+            <div class="mo-stat"><span class="num">115</span><span class="lbl">Academic Year</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="advisor" aria-labelledby="advisor-mem-title">
+    <div class="wrap">
+      <p class="eyebrow" style="margin-bottom:6px;">PRINCIPAL INVESTIGATOR</p>
+      <div class="advisor-card">
+        <div class="advisor-card-head">
+          <h2 class="cat-section-title" id="advisor-mem-title" style="margin:0;">Principal Investigator</h2>
+          <a class="advisor-btn" href="https://mis.nkust.edu.tw/p/405-1097-23621,c5116.php?Lang=zh-tw" target="_blank" rel="noopener">Professor Profile</a>
+        </div>
+        <div class="advisor-body">
+          <div class="advisor-photo">
+            <img src="images/team/PD/老師14.png" alt="Photo of Prof. Kuo-Wei Su" onerror="this.style.display='none';">
+          </div>
+          <div class="advisor-detail">
+            <h3>Kuo-Wei Su <span style="font-weight:400;color:var(--ink-soft);font-size:15px;">Distinguished Professor</span></h3>
+            <p class="advisor-en">Chris K.W. Su, Ph.D.</p>
+            <div class="advisor-contact">
+              <span>Email: <a href="mailto:kwsu@nkust.edu.tw">kwsu@nkust.edu.tw</a></span>
+              <span>Ext.: 07-6011000 ext. 34124</span>
+            </div>
+            <a class="advisor-detail-link" href="https://mis.nkust.edu.tw/p/405-1097-23621,c5116.php?Lang=zh-tw" target="_blank" rel="noopener">View full faculty profile (publications, grants, industry collaboration, etc.) →</a>
+            <div class="advisor-tags">
+              <span class="advisor-tag">Dept. of Information Management</span>
+              <span class="advisor-tag">Lab. for Human-Computer Interaction and Smart Technology</span>
+              <span class="advisor-tag">President, Ergonomics Society of Taiwan</span>
+            </div>
+            <p class="advisor-interests-title">RESEARCH INTERESTS</p>
+            <ul class="advisor-interests">
+              <li>Human-Computer Interaction</li>
+              <li>Healthcare and Ergonomics</li>
+              <li>Social Commerce</li>
+              <li>User Experience Research</li>
+              <li>Big Data Applications</li>
+              <li>AI &amp; Human-Robot Collaboration</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="section-back"><a href="#cat-jump">↑ Back to member categories</a></p>
+    </div>
+  </section>
+
+  <section id="cochair" aria-labelledby="cochair-title">
+    <div class="wrap">
+      <h2 class="cat-section-title" id="cochair-title">Co-Principal Investigators</h2>
+      <div class="member-grid">
+        <a class="member-card-link" href="https://mis.nkust.edu.tw/p/404-1097-65400.php?Lang=zh-tw" target="_blank" rel="noopener">
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/PD/蔡耀德.png" alt="Photo of Yao-Te Tsai" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">Yao-Te Tsai</h3>
+          <span class="member-role">Co-Principal Investigator</span>
+          <div class="member-skills-label">Skills</div>
+          <ul class="member-skills">
+            <li>Supply Chain Management</li>
+            <li>Smart Healthcare</li>
+          </ul>
+        </div>
+        </a>
+      </div>
+      <p class="section-back"><a href="#cat-jump">↑ Back to member categories</a></p>
+    </div>
+  </section>
+
+  <section id="phd" aria-labelledby="phd-title">
+    <div class="wrap">
+      <h2 class="cat-section-title" id="phd-title">Ph.D. Students</h2>
+      <div class="member-grid">
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/博士生/林佩怡6.png" alt="Photo of Pei-Yi Lin" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">林佩怡</h3>
+          <span class="member-role">Ph.D. Student</span>
+          <div class="member-skills-label">Skills</div>
+          <ul class="member-skills">
+            <li>Communication &amp; Coordination</li>
+            <li>Smart Healthcare</li>
+          </ul>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/博士生/王豪浥3.png" alt="Photo of Hao-Yi Wang" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">王豪浥</h3>
+          <span class="member-role">Ph.D. Student</span>
+          <div class="member-skills-label">Skills</div>
+          <ul class="member-skills">
+            <li>E-Commerce</li>
+            <li>Usability Evaluation &amp; Testing</li>
+          </ul>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/博士生/李蕙萍2.png" alt="Photo of Hui-Ping Li" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">李蕙萍</h3>
+          <span class="member-role">Ph.D. Student</span>
+          <div class="member-skills-label">Skills</div>
+          <ul class="member-skills">
+            <li>OSH</li>
+            <li>Ergonomics Prevention of MSDs</li>
+          </ul>
+        </div>
+      </div>
+      <p class="section-back"><a href="#cat-jump">↑ Back to member categories</a></p>
+    </div>
+  </section>
+
+  <section id="master" aria-labelledby="master-title">
+    <div class="wrap">
+      <h2 class="cat-section-title" id="master-title">Master's Students</h2>
+      <div class="member-grid">
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/碩二生/陳仕航.png" alt="Photo of Shih-Hang Chen" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">陳仕航</h3>
+          <span class="member-role">Master's Student, General Track</span>
+          <div class="member-skills-label">Skills</div>
+          <ul class="member-skills">
+            <li>XR Development</li>
+            <li>Java Development</li>
+          </ul>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/碩二生/陳岳群.png" alt="Photo of Yueh-Chun Chen" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">陳岳群</h3>
+          <span class="member-role">Master's Student, General Track</span>
+          <div class="member-skills-label">Skills</div>
+          <ul class="member-skills">
+            <li>Finding myself…</li>
+            <li>Not sure how long it'll take…</li>
+          </ul>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/碩二生/楊子誼.png" alt="Photo of Tzu-Yi Yang" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">楊子誼</h3>
+          <span class="member-role">Master's Student, General Track</span>
+          <div class="member-skills-label">Skills</div>
+          <ul class="member-skills">
+            <li>Image Recognition</li>
+            <li>Python</li>
+          </ul>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/碩一生/吳瑋庭.png" alt="Photo of 吳瑋庭" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">吳瑋庭</h3>
+          <span class="member-role">Master's Student, General Track</span>
+          <div class="member-skills-label">Skills</div>
+          <ul class="member-skills">
+            <li>Web Design</li>
+            <li>Python</li>
+          </ul>
+        </div>
+		<div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/碩一生/郭俐辰.png" alt="Photo of 郭俐辰" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">郭俐辰</h3>
+          <span class="member-role">Master's Student, General Track</span>
+          <div class="member-skills-label">Skills</div>
+          <ul class="member-skills">
+            <li>Service Design</li>
+            <li>Interpersonal Communication</li>
+          </ul>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/碩一生/朱育萱.png" alt="Photo of 朱育萱" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">朱育萱</h3>
+          <span class="member-role">Master's Student, General Track</span>
+          <div class="member-skills-label">Skills</div>
+          <ul class="member-skills">
+            <li>Web Design</li>
+            <li>Python</li>
+          </ul>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/碩一生/楊詠涵.png" alt="Photo of 楊詠涵" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">楊詠涵</h3>
+          <span class="member-role">Master's Student, General Track</span>
+          <div class="member-skills-label">Skills</div>
+          <ul class="member-skills">
+            <li>UI/UX</li>
+            <li>Python</li>
+          </ul>
+        </div>
+      </div>
+      <p class="section-back"><a href="#cat-jump">↑ Back to member categories</a></p>
+    </div>
+  </section>
+
+  <!--<section id="honors" aria-labelledby="honors-title">
+    <div class="wrap">
+      <h2 class="cat-section-title" id="honors-title">Undergraduate — Honors Track</h2>
+      <div class="member-grid">
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/大四生/許菫雯.png" alt="Photo of Chin-Wen Hsu" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">許菫雯</h3>
+          <span class="member-role">Undergraduate (Honors Track)</span>
+          <div class="member-skills-label">Skills</div>
+          <ul class="member-skills">
+            <li>Making Presentation</li>
+            <li>Word Processing</li>
+          </ul>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/大四生/黃楷烜.png" alt="Photo of Kai-Hsuan Huang" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">黃楷烜</h3>
+          <span class="member-role">Undergraduate (Honors Track)</span>
+          <div class="member-skills-label">Skills</div>
+          <ul class="member-skills">
+            <li>Java</li>
+            <li>Front-end Development</li>
+          </ul>
+        </div>
+      </div>
+      <p class="section-back"><a href="#cat-jump">↑ Back to member categories</a></p>
+    </div>
+  </section>
+
+-->
+
+  <section id="undergrad" aria-labelledby="undergrad-title">
+    <div class="wrap">
+      <h2 class="cat-section-title" id="undergrad-title">Undergraduate Capstone Students</h2>
+      <div class="member-grid">
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/大三生/邱靖芸.png" alt="Photo of Ching-Yun Chiu" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">邱靖芸</h3>
+          <span class="member-role">Undergraduate Capstone Student</span>
+          <div class="member-skills-label">Skills</div>
+          <ul class="member-skills">
+            <li>AI Applications</li>
+            <li>Document Processing</li>
+          </ul>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/大三生/徐士宸.png" alt="Photo of Shih-Chen Hsu" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">徐士宸</h3>
+          <span class="member-role">Undergraduate Capstone Student</span>
+          <div class="member-skills-label">Skills</div>
+          <ul class="member-skills">
+            <li>Interpersonal Communication</li>
+            <li>Java Programming</li>
+          </ul>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/大三生/廖子緣.png" alt="Photo of Tzu-Yuan Liao" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">廖子緣</h3>
+          <span class="member-role">Undergraduate Capstone Student</span>
+          <div class="member-skills-label">Skills</div>
+          <ul class="member-skills">
+            <li>Python Development</li>
+            <li>AI Applications</li>
+          </ul>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/大三生/陳宥蓁.png" alt="Photo of Yu-Chen Chen" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">陳宥蓁</h3>
+          <span class="member-role">Undergraduate Capstone Student</span>
+          <div class="member-skills-label">Skills</div>
+          <ul class="member-skills">
+            <li>Arduino</li>
+            <li>Communication &amp; Coordination</li>
+          </ul>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/大三生/裴玉萍.png" alt="Photo of Yu-Ping Pei" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">裴玉萍</h3>
+          <span class="member-role">Undergraduate Capstone Student</span>
+          <div class="member-skills-label">Skills</div>
+          <ul class="member-skills">
+            <li>Java</li>
+            <li>Document Processing</li>
+          </ul>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/大三生/許筑翕.png" alt="Photo of Chu-Hsi Hsu" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">許筑翕</h3>
+          <span class="member-role">Undergraduate Capstone Student</span>
+          <div class="member-skills-label">Skills</div>
+          <ul class="member-skills">
+            <li>Java Programming</li>
+            <li>Document Writing</li>
+          </ul>
+        </div>
+      </div>
+      <p class="section-back"><a href="#cat-jump">↑ Back to member categories</a></p>
+    </div>
+  </section>
+
+  <section id="alumni" aria-labelledby="alumni-title">
+    <div class="wrap">
+      <h2 class="cat-section-title" id="alumni-title">Alumni</h2>
+      <p class="cat-section-lede">Skills of past graduating members, organized by graduation academic year.</p>
+      <h3 class="cat-section-title" style="font-size:17px;margin:36px 0 16px;">AY115 Graduates (2026)</h3>
+      <div class="alumni-list">
+        <div class="alumni-item"><span class="yr">AY115</span><span class="name">白宜婷</span><span class="note">Master's Student, General Track｜Web Design · Java Development</span></div>
+        <div class="alumni-item"><span class="yr">AY115</span><span class="name">林曉範</span><span class="note">Master's Student, General Track｜Project Management · MR Development</span></div>
+        <div class="alumni-item"><span class="yr">AY115</span><span class="name">洪崇文</span><span class="note">Master's Student, General Track｜Data Analysis · UIUX Design</span></div>
+        <div class="alumni-item"><span class="yr">AY115</span><span class="name">徐敏容</span><span class="note">Master's Student, General Track｜App Development · Tiger Rotten</span></div>
+        <div class="alumni-item"><span class="yr">AY115</span><span class="name">簡言蓁</span><span class="note">Master's Student, General Track｜Python · Negotiating Skill</span></div>
+        <div class="alumni-item"><span class="yr">AY115</span><span class="name">許菫雯</span><span class="note">Undergraduate (Honors Track)｜Making Presentation · Word Processing</span></div>
+        <div class="alumni-item"><span class="yr">AY115</span><span class="name">黃楷烜</span><span class="note">Undergraduate Capstone Student｜Java · Front-end Development</span></div>
+        <div class="alumni-item"><span class="yr">AY115</span><span class="name">徐毓廷</span><span class="note">Undergraduate Capstone Student｜R Programming · Word Processing</span></div>
+        <div class="alumni-item"><span class="yr">AY115</span><span class="name">張鈞瑋</span><span class="note">Undergraduate Capstone Student｜Python Development · UI Design</span></div>
+      </div>
+
+      <h3 class="cat-section-title" style="font-size:17px;margin:36px 0 16px;">AY114 Graduates (2025)</h3>
+      <div class="alumni-list">
+        <div class="alumni-item"><span class="yr">AY114</span><span class="name">劉憶寬</span><span class="note">Master's Student, General Track｜Finding myself… · Not sure how long it'll take…</span></div>
+        <div class="alumni-item"><span class="yr">AY114</span><span class="name">黃瑀淮</span><span class="note">Undergraduate Capstone Student｜Finding myself… · Still searching~~</span></div>
+        <div class="alumni-item"><span class="yr">AY114</span><span class="name">劉芸廷</span><span class="note">Undergraduate Capstone Student｜Web Design · Document Processing</span></div>
+        <div class="alumni-item"><span class="yr">AY114</span><span class="name">邱楊智</span><span class="note">Undergraduate Capstone Student｜Document Processing · Negotiation Skills</span></div>
+        <div class="alumni-item"><span class="yr">AY114</span><span class="name">龔倢</span><span class="note">Undergraduate Capstone Student｜Web Design · Mixed Reality Development</span></div>
+        <div class="alumni-item"><span class="yr">AY114</span><span class="name">陳盈臻</span><span class="note">Undergraduate Capstone Student｜Java Full-Stack Development · Python Development</span></div>
+        <div class="alumni-item"><span class="yr">AY114</span><span class="name">林秭礽</span><span class="note">Undergraduate Capstone Student｜Full-Stack Web Development · Mixed Reality Development</span></div>
+        <div class="alumni-item"><span class="yr">AY114</span><span class="name">陳欣妤</span><span class="note">Undergraduate Capstone Student｜Document Processing · Negotiation Skills</span></div>
+        <div class="alumni-item"><span class="yr">AY114</span><span class="name">王瑋翎</span><span class="note">Undergraduate Capstone Student｜UI/UX Design · Data Analysis</span></div>
+      </div>
+
+      <h3 class="cat-section-title" style="font-size:17px;margin:36px 0 16px;">AY113 Graduates (2024)</h3>
+      <div class="alumni-list">
+        <div class="alumni-item"><span class="yr">AY113</span><span class="name">何承翰</span><span class="note">Master's Student, General Track｜Programming · Backend Web Design</span></div>
+        <div class="alumni-item"><span class="yr">AY113</span><span class="name">劉宜靜</span><span class="note">Master's Student, General Track｜Copywriting · Graphic Design</span></div>
+        <div class="alumni-item"><span class="yr">AY113</span><span class="name">陳靖慈</span><span class="note">Master's Student, General Track｜Coordination &amp; Communication · Interface Design</span></div>
+        <div class="alumni-item"><span class="yr">AY113</span><span class="name">陳冠穎</span><span class="note">Master's Student, General Track｜Frontend &amp; Backend Web Dev · App Development</span></div>
+        <div class="alumni-item"><span class="yr">AY113</span><span class="name">吳佩瑜</span><span class="note">Undergraduate Capstone Student｜Web Design · Document Processing</span></div>
+        <div class="alumni-item"><span class="yr">AY113</span><span class="name">林兪丞</span><span class="note">Undergraduate Capstone Student｜Python · Document Processing</span></div>
+        <div class="alumni-item"><span class="yr">AY113</span><span class="name">王貿新</span><span class="note">Undergraduate Capstone Student｜Unity · Game Design</span></div>
+        <div class="alumni-item"><span class="yr">AY113</span><span class="name">黃梃样</span><span class="note">Undergraduate Capstone Student｜Copywriting · Communication &amp; Coordination</span></div>
+        <div class="alumni-item"><span class="yr">AY113</span><span class="name">林連恩</span><span class="note">Undergraduate Capstone Student｜Document Processing · Programming</span></div>
+      </div>
+
+      <h3 class="cat-section-title" style="font-size:17px;margin:36px 0 16px;">AY112 Graduates (2023)</h3>
+      <div class="alumni-list">
+        <div class="alumni-item"><span class="yr">AY112</span><span class="name">邱伯智</span><span class="note">Ph.D. Student｜Academic Journals · Research Proposal Writing</span></div>
+        <div class="alumni-item"><span class="yr">AY112</span><span class="name">黃心瑜</span><span class="note">Master's Student, General Track｜Visual Design · Computer Graphics</span></div>
+        <div class="alumni-item"><span class="yr">AY112</span><span class="name">賴柏嘉</span><span class="note">Master's Student, General Track｜Python · E-Commerce</span></div>
+        <div class="alumni-item"><span class="yr">AY112</span><span class="name">林悅如</span><span class="note">Undergraduate Capstone Student｜Proposal Writing · Communication &amp; Coordination</span></div>
+        <div class="alumni-item"><span class="yr">AY112</span><span class="name">劉昌儒</span><span class="note">Undergraduate Capstone Student｜Startup Planning · Project Management</span></div>
+        <div class="alumni-item"><span class="yr">AY112</span><span class="name">林亞芳</span><span class="note">Undergraduate Capstone Student｜Computer Graphics · Art Design</span></div>
+        <div class="alumni-item"><span class="yr">AY112</span><span class="name">高翊馨</span><span class="note">Undergraduate Capstone Student｜Web Design · Graphic Design</span></div>
+        <div class="alumni-item"><span class="yr">AY112</span><span class="name">張珮君</span><span class="note">Undergraduate Capstone Student｜Programming · Graphic Design &amp; Documentation</span></div>
+        <div class="alumni-item"><span class="yr">AY112</span><span class="name">許琇喬</span><span class="note">Undergraduate Capstone Student｜Concept Planning · Coordination &amp; Organization</span></div>
+      </div>
+
+      <h3 class="cat-section-title" style="font-size:17px;margin:36px 0 16px;">AY111 Graduates (2022)</h3>
+      <div class="alumni-list">
+        <div class="alumni-item"><span class="yr">AY111</span><span class="name">胥佩君</span><span class="note">Master's Student, General Track｜Web Design · Multimedia Web Design</span></div>
+        <div class="alumni-item"><span class="yr">AY111</span><span class="name">林婉瑧</span><span class="note">Master's Student, E-Commerce Track｜Online Marketing · Multimedia Web Design</span></div>
+        <div class="alumni-item"><span class="yr">AY111</span><span class="name">曾建智</span><span class="note">Master's Student, General Track｜Programming · Frontend &amp; Backend Web Design</span></div>
+        <div class="alumni-item"><span class="yr">AY111</span><span class="name">阮琮文</span><span class="note">Master's Student, General Track｜System Interface Design · Web Design</span></div>
+        <div class="alumni-item"><span class="yr">AY111</span><span class="name">蕭宗朋</span><span class="note">Master's Student, General Track｜Algorithm Design · Deep Learning</span></div>
+        <div class="alumni-item"><span class="yr">AY111</span><span class="name">蔣長珅</span><span class="note">Undergraduate (Honors Track)｜Python Programming · Financial Programming</span></div>
+        <div class="alumni-item"><span class="yr">AY111</span><span class="name">黃琦雯</span><span class="note">Undergraduate Capstone Student｜Software Development · Programming</span></div>
+        <div class="alumni-item"><span class="yr">AY111</span><span class="name">溫玉婕</span><span class="note">Undergraduate Capstone Student｜Character Design &amp; Concept Planning · Dreams of being a laid-back "salted fish"</span></div>
+        <div class="alumni-item"><span class="yr">AY111</span><span class="name">蔡佳蓁</span><span class="note">Undergraduate Capstone Student｜Character Design &amp; Model Making · Dreams of being a chill potato</span></div>
+        <div class="alumni-item"><span class="yr">AY111</span><span class="name">黃湘雲</span><span class="note">Undergraduate Capstone Student｜Interface Design · Graphic Design</span></div>
+      </div>
+
+
+      <p style="margin-top:24px;font-size:13.5px;color:var(--ink-faint);font-family:var(--mono);"></p>
+	  <p class="section-back">
+		<a href="#cat-jump" class="section-back-icon" aria-label="Back to member categories">
+			<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+				<line x1="12" y1="19" x2="12" y2="5"></line>
+				<polyline points="5 12 12 5 19 12"></polyline>
+			</svg>
+		</a>
+	  </p>
+    </div>
+  </section>
+
+  <a href="#top" class="back-to-top" id="backToTop" aria-label="Back to top">↑</a>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    Lab. for Human-Computer Interaction and Smart Technology · NKUST Dept. of Information Management
+    <div class="foot-links">
+      <a href="index-en.html">Home</a><a href="about-en.html">About</a><a href="faq-en.html">FAQ</a><a href="mailto:kwsu@nkust.edu.tw">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+<script>
+  document.getElementById('backToTop').addEventListener('click', function(e){
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+
+</body></html>

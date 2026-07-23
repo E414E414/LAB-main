@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head>
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>研究成果 | 人機互動與智慧科技實驗室 · NKUST</title>
+<meta name="description" content="人機互動與智慧科技實驗室的獲獎紀錄、科技部／國科會研究計畫與學術服務榮譽。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  /* ---- achievements 頁專用樣式（延伸既有樣式，不覆蓋全站） ---- */
+  .ach-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden; margin:28px 0 40px; }
+  .ach-stat { background:#fff; padding:20px 18px; text-align:center; }
+  .ach-stat .num { display:block; font-family:var(--mono); font-size:clamp(22px,3vw,32px); font-weight:700; }
+  .ach-stat .lbl { display:block; margin-top:4px; font-size:13px; color:var(--ink-soft); }
+
+  .ach-filter { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:28px; }
+
+  .ach-section-title { font-size:15px; font-weight:700; letter-spacing:.02em; margin:0 0 18px; padding-top:8px; }
+  .ach-section-title .cnt { font-family:var(--mono); font-weight:400; color:var(--ink-faint); margin-left:8px; }
+
+  .grant-card { display:flex; flex-direction:column; gap:6px; }
+  .grant-card .code { font-family:var(--mono); font-size:12.5px; color:var(--ink-faint); }
+
+  /* 卡片內：日期 / 事件說明 / 參與人員（貼齊底部） */
+  .ach-card{ height:100%; }
+  .ach-date{ font-family:var(--mono); font-size:12px; color:var(--ink-faint); }
+  .ach-people{ margin-top:auto; padding-top:.6rem; border-top:1px dashed var(--line); font-size:13px; color:var(--ink-soft); }
+  .ach-people .label{ font-weight:700; color:var(--ink); margin-right:.35em; }
+
+  /* 無名次的研討會發表／產學合作，用中性色徽章區隔 */
+  .award-present{
+    background:var(--card); color:var(--ink-soft); border:1px solid var(--line);
+    text-shadow:none; box-shadow:none;
+  }
+
+  .honor-panel { border:1px solid var(--line); border-radius:12px; padding:28px 30px; display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+  .honor-panel h4 { margin:0 0 12px; font-size:14px; letter-spacing:.02em; color:var(--ink-soft); }
+  .honor-panel ul { margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:9px; }
+  .honor-panel li { font-size:14.5px; line-height:1.5; padding-left:14px; position:relative; }
+  .honor-panel li::before { content:"·"; position:absolute; left:0; color:var(--ink-faint); }
+
+  .ach-more { text-align:center; margin-top:8px; }
+
+  [data-ach-hidden="true"] { display:none !important; }
+
+  @media (max-width:720px){
+    .ach-stats{ grid-template-columns:repeat(2,1fr); }
+    .honor-panel{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要內容 / Skip to content</a>
+
+<header class="site">
+  <div class="nav-row">
+    <a class="brand" href="index.html">
+      <img class="brand-logo" src="assets/nkust-logo.png" alt="國立高雄科技大學校徽">
+      <span class="brand-text">
+        <span class="brand-zh">人機互動與智慧科技實驗室</span>
+        <span class="brand-en">Lab. for Human-Computer Interaction and Smart Technology</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">選單</button>
+    <nav class="primary" id="primary-nav" aria-label="主要導覽">
+      <ul>
+        <li><a href="index.html">首頁</a></li>
+        <li><a href="about.html">關於實驗室</a></li>
+        <li><a href="news.html">最新消息</a></li>
+        <li><a href="activities.html">實驗室活動</a></li>
+        <li><a href="videos.html">影音專區</a></li>
+        <li><a href="achievements.html" aria-current="page">研究成果</a></li>
+        <li><a href="members.html">實驗室成員</a></li>
+        <li><a href="faq.html">常見問題</a></li>
+        <li class="nav-lang"><a href="achievements-en.html" lang="en">EN</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero" data-screen-label="研究成果">
+    <div class="wrap">
+      <p class="breadcrumb"><a href="index.html">首頁</a> / 研究成果</p>
+      <p class="eyebrow">ACHIEVEMENTS</p>
+      <h1 class="page-title">研究成果與榮譽</h1>
+      <p class="page-lede">彙整實驗室學生競賽獲獎、指導教授歷年主持之科技部／國科會研究計畫，以及在學術社群中的服務與榮譽紀錄。</p>
+
+      <div class="ach-stats" role="group" aria-label="研究成果統計">
+        <div class="ach-stat"><span class="num" data-count-to="29">0</span><span class="lbl">競賽獲獎紀錄</span></div>
+        <div class="ach-stat"><span class="num" data-count-to="60" data-count-suffix="+">0</span><span class="lbl">歷年主持研究計畫</span></div>
+        <div class="ach-stat"><span class="num" data-count-to="16">0</span><span class="lbl">國際期刊審查／發表</span></div>
+        <div class="ach-stat"><span class="num" data-count-to="3">0</span><span class="lbl">學會現任理監事職務</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="ach-title">
+    <div class="wrap">
+      <h2 class="section-title" id="ach-title" style="position:absolute;left:-9999px;">研究成果篩選與清單</h2>
+
+      <div class="ach-filter" role="group" aria-label="依類別篩選研究成果">
+        <button class="filter-chip" data-ach-filter="all" aria-pressed="true">全部</button>
+        <button class="filter-chip" data-ach-filter="award" aria-pressed="false">競賽與獲獎</button>
+        <button class="filter-chip" data-ach-filter="grant" aria-pressed="false">研究計畫</button>
+      </div>
+
+      <!-- 競賽與獲獎 -->
+      <div data-ach-group="award">
+        <h3 class="ach-section-title">競賽與獲獎<span class="cnt">29</span></h3>
+        <div class="ach-grid">
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-honorable">佳作</span>
+            <span class="ach-date">2024.07</span>
+            <h4>指導學生參加「2024全國工業工程與管理碩士論文競賽」</h4>
+            <p class="ach-people"><span class="label">參與人員：</span>陳靖慈</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-gold">金質獎</span>
+            <span class="ach-date">2024.06</span>
+            <h4>指導學生參加「2024年實務專題競賽」，作品主題【利用混合實境技術提升醫病關係之應用】</h4>
+            <p class="ach-people"><span class="label">參與人員：</span>林秭礽、陳欣妤、王瑋翎</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-gold">金質獎</span>
+            <span class="ach-date">2024.06</span>
+            <h4>指導學生參加「2024年實務專題競賽」，作品主題【基於姿態辨識技術結合HoloLens2之復健輔助系統開發－以腦中風患者為例】</h4>
+            <p class="ach-people"><span class="label">參與人員：</span>龔倢、陳盈臻、邱楊智、劉芸廷</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-2nd">第二名</span>
+            <span class="ach-date">2024.05</span>
+            <h4>指導學生參加「2024全國工業工程與管理大學生專題論文與技術報告競賽」人因工程與設計組</h4>
+            <p class="ach-people"><span class="label">參與人員：</span>林秭礽、陳欣妤、王瑋翎</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-1st">第一名</span>
+            <span class="ach-date">2024.05</span>
+            <h4>指導學生參加「2024全國工業工程與管理大學生專題論文與技術報告競賽」大數據與資訊分析組</h4>
+            <p class="ach-people"><span class="label">參與人員：</span>龔倢、陳盈臻、邱楊智、劉芸廷</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-1st">最佳論文獎</span>
+            <span class="ach-date">2024</span>
+            <h4>發表論文於 2nd International Conference on Intelligent Science and Sustainable Development (ISASD 2024)：Immersive Technology in Healthcare Education for Acceptance: OSCE</h4>
+            <p class="ach-people"><span class="label">參與人員：</span>Pei-Yi Lin、Eric Kin-Lap Lee、Kuo-Wei Su</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-honorable">佳作</span>
+            <span class="ach-date">2023.11</span>
+            <h4>指導學生參加「第28屆大專校院資訊應用服務創新競賽」教育開放資料組，作品【Edu Maker BnB】</h4>
+            <p class="ach-people"><span class="label">參與人員：</span>廖翊翔、黃致遠、黃楷烜、關亦晴</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-3rd">第三名</span>
+            <span class="ach-date">2023.06</span>
+            <h4>指導學生參加「2023年實務專題競賽」，作品【AR Experience Menu】</h4>
+            <p class="ach-people"><span class="label">參與人員：</span>林曉範、洪崇文、吳佩瑜</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-honorable">研究生組佳作</span>
+            <span class="ach-date">2022.11</span>
+            <h4>指導學生參加「2022中華民國情境智能學會學生專題及研究成果競賽」，作品【評估城市推廣網站之使用性－以左鎮公舘網站為例】</h4>
+            <p class="ach-people"><span class="label">參與人員：</span>林婉瑧、賴柏嘉</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-3rd">研究生組第三名</span>
+            <span class="ach-date">2022.11</span>
+            <h4>指導學生參加「2022中華民國情境智能學會學生專題及研究成果競賽」，作品【以使用性評估探討擴增實境結合電子商務於不同設備之消費者體驗－以Amazon電商為例】</h4>
+            <p class="ach-people"><span class="label">參與人員：</span>胥佩君、黃心瑜</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-present">研討會發表</span>
+            <span class="ach-date">2022.11</span>
+            <h4>發表於「2022中國工業工程學會年會暨學術研討會」：運用SEM-CPU法評估擴增實境互動廣告遊戲行銷手遊之前期研究</h4>
+            <p class="ach-people"><span class="label">參與人員：</span>張日祚、黃心瑜、賴柏嘉、王釗鴻、劉宜靜、何承翰</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-2nd">大專生組第二名</span>
+            <span class="ach-date">2022.11</span>
+            <h4>指導學生參加「中華民國情境智能學會 2022 AMIE 論文競賽」，作品【開發具有使用者體驗的醫院癌症中心之對話機器人】</h4>
+            <p class="ach-people"><span class="label">參與人員：</span>許琇喬、張珮君、林悅如</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-present">論文發表</span>
+            <span class="ach-date">2022</span>
+            <h4>發表於 The 6th International Conference on Ambient Intelligence and Ergonomics：Changes of pharmaceutical care in medical institutions under the epidemic</h4>
+            <p class="ach-people"><span class="label">參與人員：</span>Pei-Yi Lin、Eric Kin-Lap Lee、Chen-Ju Hung、Kuo-Wei Su、Chao-Hung Wang、Po-Chih Chiu</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-3rd">大專生組第三名</span>
+            <span class="ach-date">2022.11</span>
+            <h4>指導學生參加「中華民國情境智能學會 2022 AMIE 論文競賽」，作品【以介面設計準則建置AR數位導覽促進食農教育發展】</h4>
+            <p class="ach-people"><span class="label">參與人員：</span>劉昌儒、高翊馨、林亞芳</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-present">研討會發表</span>
+            <span class="ach-date">2022.11</span>
+            <h4>發表於「2022中國工業工程學會年會暨學術研討會」：以介面設計準則建置AR數位導覽促進食農教育發展</h4>
+            <p class="ach-people"><span class="label">參與人員：</span>蘇國瑋、劉昌儒、高翊馨、林亞芳、陳靖慈</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-present">研討會發表</span>
+            <span class="ach-date">2022.11</span>
+            <h4>發表於「2022中國工業工程學會年會暨學術研討會」：開發具有使用者體驗的醫院癌症中心之對話機器人</h4>
+            <p class="ach-people"><span class="label">參與人員：</span>蘇國瑋、許琇喬、張珮君、林悅如</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-present">產學合作</span>
+            <span class="ach-date">2022.09</span>
+            <h4>參與「人工智慧產學研聯盟」計畫：蔬果栽培管理專家系統</h4>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-present">產學合作</span>
+            <span class="ach-date">2022.09</span>
+            <h4>參與「人工智慧產學研聯盟」計畫：AR擴增實境微廣告系統</h4>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-3rd">第三名</span>
+            <span class="ach-date">2022.06</span>
+            <h4>指導學生參加「2022全國工業工程與管理大學生專題論文與技術報告競賽」人因工程與設計組，作品【AR數位導覽之建置與使用性測試促進食農教育發展】</h4>
+            <p class="ach-people"><span class="label">參與人員：</span>劉昌儒、高翊馨、林亞芳</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-present">研討會發表</span>
+            <span class="ach-date">2022.03</span>
+            <h4>發表於「EST2022 人因工程學會年會暨學術研討會」：WebAR遊戲行銷防疫智慧導覽系統－以航空教育展示館為例</h4>
+            <p class="ach-people"><span class="label">參與人員：</span>黃心瑜、張珮君、王貿新、徐敏容、林曉範</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-honorable">研究生組佳作</span>
+            <span class="ach-date">2022</span>
+            <h4>指導學生參加「2022第29屆中華民國人因工程學會年會暨學術研討會」學生論文競賽，作品【應用設計原則與使用性評估以開發永續性之行動應用程式】</h4>
+            <p class="ach-people"><span class="label">參與人員：</span>鄧佩思、林婉瑧、胥佩君、賴柏嘉</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-honorable">佳作</span>
+            <span class="ach-date">2021.11</span>
+            <h4>指導學生參加「2021聯合國永續發展目標SDGs青年倡議英文提案競賽」</h4>
+            <p class="ach-people"><span class="label">參與人員：</span>林曉範、洪崇文、吳佩瑜</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-gold">優等論文獎</span>
+            <span class="ach-date">2021.10</span>
+            <h4>指導學生參加「第十四屆崇越論文大賞」碩士組－AI資訊類</h4>
+            <p class="ach-people"><span class="label">參與人員：</span>王玟嵐</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-1st">B組第一名</span>
+            <span class="ach-date">2021.08</span>
+            <h4>指導學生參加「NUWA創意機器人大賽」，作品【kebbi防疫小尖兵】</h4>
+            <p class="ach-people"><span class="label">參與人員：</span>許琇喬、張珮君、林悅如</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-1st">第一名</span>
+            <span class="ach-date">2021.07</span>
+            <h4>指導學生參加「中國工業工程學會 2021 年大專專題論文競賽」人因工程與設計組</h4>
+            <p class="ach-people"><span class="label">參與人員：</span>黃琦雯、黃湘雲、蔡佳蓁、溫玉婕</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-honorable">甲等</span>
+            <span class="ach-date">2021.06</span>
+            <h4>指導學生參加「2021資訊智慧創新跨域專題競賽」</h4>
+            <p class="ach-people"><span class="label">參與人員：</span>黃琦雯、黃湘雲、蔡佳蓁、溫玉婕</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-gold">優勝及佳作</span>
+            <span class="ach-date">2020.12</span>
+            <h4>指導學生參加「2020全國工業工程與管理碩士論文競賽」</h4>
+            <p class="ach-people"><span class="label">參與人員：</span>邱伯智、王玟嵐、黃覺柔、胥佩君、林婉瑧、曾建智、蔣長珅</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-gold">優勝及佳作</span>
+            <span class="ach-date">2020.07</span>
+            <h4>指導學生參加「2020全國工業工程與管理碩士論文競賽」</h4>
+            <p class="ach-people"><span class="label">參與人員：</span>鄭伊辰、劉宇豐</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-present">多項殊榮</span>
+            <span class="ach-date">2019</span>
+            <h4>指導 EMBA 在職專班學生參賽，榮獲馬來西亞國際發明獎（環境能源類）金牌、泰國最佳發明獎，以及經濟部工業局「創業歸故里」競賽第二名等多項殊榮</h4>
+          </div>
+        </div>
+      </div>
+
+      <!-- 研究計畫 -->
+      <div data-ach-group="grant">
+        <h3 class="ach-section-title">師生研究計畫紀錄<span class="cnt">6</span></h3>
+        <div class="ach-grid">
+		  <div class="ach-card" data-ach-cat="grant">
+            <span class="ach-badge award-grant">計畫執行中</span>
+            <span class="ach-date">2026.07</span>
+            <h4>指導學生執行「國科會大專學生研究計畫」：應用混合實境與人因工程理念於護理抽血技術訓練</h4>
+            <p class="ach-people"><span class="label">參與人員：</span>裴玉萍、許筑翕、陳宥蓁</p>
+          </div>
+		  <div class="ach-card" data-ach-cat="grant">
+            <span class="ach-badge award-grant">計畫申請通過</span>
+            <span class="ach-date">2025.07</span>
+            <h4>指導學生執行「國科會大專學生研究計畫」：醫護新視界：混合實境技術在護理工作的應用</h4>
+            <p class="ach-people"><span class="label">參與人員：</span>邱靖芸、廖子緣、徐士宸</p>
+          </div>
+          <div class="ach-card" data-ach-cat="grant">
+            <span class="ach-badge award-grant">計畫申請通過</span>
+            <span class="ach-date">2024.06</span>
+            <h4>指導學生執行「國科會大專學生研究計畫」：姿態辨識技術結合HoloLens2之復健輔助系統開發－以中風患者為例</h4>
+            <p class="ach-people"><span class="label">參與人員：</span>邱楊智</p>
+          </div>
+          <div class="ach-card" data-ach-cat="grant">
+            <span class="ach-badge award-grant">計畫通過</span>
+            <span class="ach-date">2023</span>
+            <h4>通過國科會專題研究計畫：智慧工廠人機協作情境下擴增實境輔助系統設計與人因研究模式建立</h4>
+          </div>
+          <div class="ach-card" data-ach-cat="grant">
+            <span class="ach-badge award-grant">計畫申請通過</span>
+            <span class="ach-date">2023.06</span>
+            <h4>指導學生執行「國科會大專學生研究計畫」：以人機互動觀點開發聊天機器人於長照中心等安養與照護場域之應用</h4>
+            <p class="ach-people"><span class="label">參與人員：</span>林兪丞</p>
+          </div>
+          <div class="ach-card" data-ach-cat="grant">
+            <span class="ach-badge award-grant">計畫獲選</span>
+            <span class="ach-date">2022.11</span>
+            <h4>指導學生獲選「國家科學及技術委員會大專學生研究計畫」：開發具有使用者體驗的醫院癌症中心之對話機器人</h4>
+            <p class="ach-people"><span class="label">參與人員：</span>許琇喬、張珮君、林悅如</p>
+          </div>
+        </div>
+        <p class="ach-more"><a href="about.html" style="text-decoration:underline;">查看指導教授完整歷年計畫列表（60 餘項）→</a></p>
+      </div>
+
+    </div>
+  </section>
+
+  <section aria-labelledby="honor-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">ACADEMIC SERVICE</p>
+        <h2 class="section-title" id="honor-title">學術服務與榮譽</h2>
+        <p>指導教授蘇國瑋教授現任學會職務、國際期刊編輯委員與獲獎紀錄。</p>
+      </div>
+      <div class="honor-panel">
+        <div>
+          <h4>學會現任職務</h4>
+          <ul>
+            <li>中華民國人因工程學會 理事長</li>
+            <li>亞洲人因工程與設計協會 副理事長</li>
+            <li>中國工業工程學會 常務理事</li>
+            <li>中華民國人因工程學會人因工程學刊 總編輯</li>
+          </ul>
+        </div>
+        <div>
+          <h4>國際期刊編輯委員 &amp; 獲獎</h4>
+          <ul>
+            <li>Journal of Ambient Intelligence and Humanized Computing 編輯委員</li>
+            <li>Human Factors and Ergonomics in Manufacturing &amp; Service Industries 編輯委員</li>
+            <li>Safety Science 編輯委員</li>
+            <li>高雄市企業經理協進會「年度青年管理獎」（2014）</li>
+          </ul>
+        </div>
+      </div>
+      <p class="ach-more"><a href="about.html" style="text-decoration:underline;">認識指導教授完整經歷 →</a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    人機互動與智慧科技實驗室 · Lab for Human-Computer Interaction and Smart Technology · NKUST 資訊管理系
+    <div class="foot-links">
+      <a href="index.html">首頁</a><a href="videos.html">影音專區</a><a href="faq.html">常見問題</a><a href="mailto:kwsu@nkust.edu.tw">聯絡信箱</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+<script>
+  (function(){
+    // 數字動畫：進入畫面才開始跳數字
+    var nums = document.querySelectorAll('.num[data-count-to]');
+    var countObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        countObserver.unobserve(el);
+        var target = parseInt(el.getAttribute('data-count-to'), 10) || 0;
+        var suffix = el.getAttribute('data-count-suffix') || '';
+        var duration = 1100;
+        var start = null;
+        function step(ts){
+          if (start === null) start = ts;
+          var progress = Math.min((ts - start) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(eased * target) + suffix;
+          if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    }, { threshold: 0.4 });
+    nums.forEach(function(el){ countObserver.observe(el); });
+  })();
+  (function(){
+    var chips = document.querySelectorAll('.ach-filter [data-ach-filter]');
+    var cards = document.querySelectorAll('[data-ach-cat]');
+    var groups = document.querySelectorAll('[data-ach-group]');
+    chips.forEach(function(chip){
+      chip.addEventListener('click', function(){
+        chips.forEach(function(c){ c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'); });
+        var filter = chip.getAttribute('data-ach-filter');
+        groups.forEach(function(g){
+          g.setAttribute('data-ach-hidden', (filter !== 'all' && g.getAttribute('data-ach-group') !== filter) ? 'true' : 'false');
+        });
+      });
+    });
+  })();
+</script>
+
+
+</body></html>

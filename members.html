@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head>
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>實驗室成員 | 人機互動與智慧科技實驗室 · NKUST</title>
+<meta name="description" content="人機互動與智慧科技實驗室的指導教授與研究團隊成員介紹，依共同主持人、博士班、碩士班、大學部與畢業生分類。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  /* ---- members 頁新增區塊樣式（延伸既有樣式，不更動全站設計） ---- */
+  .member-stats { display:grid; grid-template-columns:repeat(6,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden; margin:20px 0 8px; }
+  .member-stat { background:#fff; padding:20px 14px; text-align:center; }
+  .member-stat .num { display:block; font-family:var(--mono); font-size:clamp(20px,2.6vw,28px); font-weight:700; }
+  .member-stat .lbl { display:block; margin-top:4px; font-size:12.5px; color:var(--ink-soft); }
+  .advisor-link-hint { display:block; margin-top:10px; font-size:13px; color:var(--ink-soft); text-decoration:underline; }
+  @media (max-width:820px){ .member-stats{ grid-template-columns:repeat(3,1fr); } }
+  @media (max-width:480px){ .member-stats{ grid-template-columns:repeat(2,1fr); } }
+
+  /* ---- 成員總覽卡片 ---- */
+  .mo-card { position:relative; border:1px solid var(--line); border-radius:16px; padding:30px 32px 26px; background:#fff; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,.04); }
+  .mo-card::before { content:""; position:absolute; top:0; left:0; right:0; height:5px; background:linear-gradient(90deg,#2F6F6B,#5B9E99,#E2762E); }
+  .mo-head { display:flex; flex-wrap:wrap; gap:20px; justify-content:space-between; align-items:flex-start; }
+  .mo-eyebrow { display:flex; align-items:center; gap:8px; font-size:12px; letter-spacing:.08em; color:var(--ink-faint); font-family:var(--mono); margin:0 0 6px; }
+  .mo-eyebrow::before { content:""; width:18px; height:2px; background:#2F6F6B; display:inline-block; }
+  .mo-title { margin:0 0 6px; font-size:26px; }
+  .mo-lede { margin:0; color:var(--ink-soft); font-size:14px; max-width:46ch; }
+  .mo-stats { display:grid; grid-template-columns:repeat(4,minmax(84px,1fr)); gap:10px; }
+  .mo-stat { position:relative; background:#f5f6f8; border-radius:12px; padding:14px 16px; overflow:hidden; text-align:left; }
+  
+  .mo-stat .num { position:relative; display:block; font-family:var(--mono); font-weight:700; font-size:26px; color:#2F6F6B; }
+  .mo-stat .lbl { position:relative; display:block; margin-top:2px; font-size:11px; letter-spacing:.04em; color:var(--ink-soft); text-transform:uppercase; }
+
+  /* ---- 分類 pill 導覽 ---- */
+  .cat-jump { display:flex; flex-wrap:wrap; gap:8px; background:#f5f6f8; border-radius:12px; padding:8px; }
+  .cat-jump a { padding:9px 16px; border-radius:8px; font-size:14px; color:var(--ink-soft); text-decoration:none; }
+  .cat-jump a:hover { background:#fff; color:#2F6F6B; box-shadow:0 1px 2px rgba(0,0,0,.06); }
+  .cat-jump a[aria-current="true"] { background:#fff; color:#2F6F6B; font-weight:700; box-shadow:0 1px 2px rgba(0,0,0,.06); }
+
+  /* ---- 指導教授卡片 ---- */
+  .advisor-card { border:1px solid var(--line); border-radius:16px; padding:30px 32px; background:#fff; }
+  .advisor-card-head { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; margin-bottom:20px; }
+  .advisor-btn { flex:none; padding:9px 18px; border-radius:999px; border:1px solid var(--line); font-size:13px; color:#2F6F6B; text-decoration:none; white-space:nowrap; }
+  .advisor-btn:hover { background:#2F6F6B; color:#fff; border-color:#2F6F6B; }
+  .advisor-body { display:flex; gap:28px; flex-wrap:wrap; }
+  .advisor-photo { width:180px; height:220px; border-radius:12px; overflow:hidden; background:#eee; flex:none; }
+  .advisor-photo img { width:100%; height:100%; object-fit:cover; display:block; }
+  .advisor-detail { flex:1; min-width:240px; }
+  .advisor-detail h3 { margin:0 0 2px; font-size:22px; }
+  .advisor-en { color:var(--ink-soft); font-size:14px; margin:0 0 12px; }
+  .advisor-contact { display:flex; flex-wrap:wrap; gap:16px; font-size:13.5px; color:var(--ink-soft); margin-bottom:10px; }
+  .advisor-contact a { color:var(--ink-soft); text-decoration:underline; }
+  .advisor-detail-link { display:inline-block; margin-bottom:18px; font-size:13.5px; text-decoration:underline; color:#2F6F6B; }
+  .advisor-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:22px; }
+  .advisor-tag { padding:5px 12px; border-radius:999px; background:#f5f6f8; font-size:12.5px; color:var(--ink-soft); }
+  .advisor-interests-title { font-size:12px; letter-spacing:.06em; color:var(--ink-faint); text-transform:uppercase; margin:0 0 12px; }
+  .advisor-interests { display:grid; grid-template-columns:1fr 1fr; gap:10px 24px; margin:0; padding:0; list-style:none; }
+  .advisor-interests li { font-size:14px; padding-left:14px; position:relative; }
+  .advisor-interests li::before { content:"·"; position:absolute; left:0; color:#E2762E; font-weight:700; }
+  .advisor-interests .en { display:block; font-size:12px; color:var(--ink-faint); }
+  @media (max-width:640px){ .advisor-interests{ grid-template-columns:1fr; } .mo-stats{ grid-template-columns:repeat(2,1fr); } }
+
+</style>
+</head>
+<body id="top">
+<a class="skip-link" href="#main">跳到主要內容 / Skip to content</a>
+
+<header class="site">
+  <div class="nav-row">
+    <a class="brand" href="index.html">
+      <img class="brand-logo" src="assets/nkust-logo.png" alt="國立高雄科技大學校徽">
+      <span class="brand-text">
+        <span class="brand-zh">人機互動與智慧科技實驗室</span>
+        <span class="brand-en">Lab. for Human-Computer Interaction and Smart Technology</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">選單</button>
+    <nav class="primary" id="primary-nav" aria-label="主要導覽">
+      <ul>
+        <li><a href="index.html">首頁</a></li>
+        <li><a href="about.html">關於實驗室</a></li>
+        <li><a href="news.html">最新消息</a></li>
+        <li><a href="activities.html">實驗室活動</a></li>
+        <li><a href="videos.html">影音專區</a></li>
+        <li><a href="achievements.html">研究成果</a></li>
+        <li><a href="members.html" aria-current="page">實驗室成員</a></li>
+        <li><a href="faq.html">常見問題</a></li>
+        <li class="nav-lang"><a href="members-en.html" lang="en">EN</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="breadcrumb"><a href="index.html">首頁</a> / 實驗室成員</p>
+      <p class="eyebrow">LAB MEMBERS</p>
+      <h1 class="page-title">實驗室成員</h1>
+      <p class="page-lede">第一校區人才集散地</p>
+      <nav class="cat-jump" id="cat-jump" aria-label="依類別跳至成員名單">
+        <a href="#overview">成員總覽</a>
+        <a href="#advisor">指導教授</a>
+        <a href="#cochair">共同主持人</a>
+        <a href="#phd">博士班</a>
+        <a href="#master">碩士班</a>
+        <!--<a href="#honors">大學部－技優生</a>--!>
+        <a href="#undergrad">大學部</a>
+        <a href="#alumni">畢業生</a>
+      </nav>
+    </div>
+  </section>
+
+  <section id="overview" aria-labelledby="overview-title">
+    <div class="wrap">
+      <div class="mo-card">
+        <div class="mo-head">
+          <div>
+            <p class="mo-eyebrow">MEMBERS OVERVIEW</p>
+            <h2 class="mo-title" id="overview-title">成員總覽</h2>
+            <p class="mo-lede">指導教授、共同主持人、碩博士生、大學部專題生與歷屆畢業生名單。</p>
+          </div>
+          <div class="mo-stats" role="group" aria-label="實驗室成員人數統計">
+            <div class="mo-stat"><span class="num">18</span><span class="lbl">Members</span></div>
+            <div class="mo-stat"><span class="num">16</span><span class="lbl">Students</span></div>
+            <div class="mo-stat"><span class="num">1</span><span class="lbl">Co-PI</span></div>
+            <div class="mo-stat"><span class="num">115</span><span class="lbl">Academic Year</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="advisor" aria-labelledby="advisor-mem-title">
+    <div class="wrap">
+      <p class="eyebrow" style="margin-bottom:6px;">PRINCIPAL INVESTIGATOR</p>
+      <div class="advisor-card">
+        <div class="advisor-card-head">
+          <h2 class="cat-section-title" id="advisor-mem-title" style="margin:0;">指導教授</h2>
+          <a class="advisor-btn" href="https://mis.nkust.edu.tw/p/405-1097-23621,c5116.php?Lang=zh-tw" target="_blank" rel="noopener">Professor Profile</a>
+        </div>
+        <div class="advisor-body">
+          <div class="advisor-photo">
+            <img src="images/team/PD/老師14.png" alt="蘇國瑋教授照片" onerror="this.style.display='none';">
+          </div>
+          <div class="advisor-detail">
+            <h3>蘇國瑋 <span style="font-weight:400;color:var(--ink-soft);font-size:15px;">特聘教授</span></h3>
+            <p class="advisor-en">Chris K.W. Su, Ph.D.</p>
+            <div class="advisor-contact">
+              <span>Email：<a href="mailto:kwsu@nkust.edu.tw">kwsu@nkust.edu.tw</a></span>
+              <span>校內分機：07-6011000 分機 34124</span>
+            </div>
+            <a class="advisor-detail-link" href="https://mis.nkust.edu.tw/p/405-1097-23621,c5116.php?Lang=zh-tw" target="_blank" rel="noopener">查看教授詳細資訊（論文發表、研究計畫、產學合作等）→</a>
+            <div class="advisor-tags">
+              <span class="advisor-tag">資訊管理系</span>
+              <span class="advisor-tag">人機互動與智慧科技實驗室</span>
+              <span class="advisor-tag">中華民國人因工程學會 理事長</span>
+            </div>
+            <p class="advisor-interests-title">RESEARCH INTERESTS 研究專長</p>
+            <ul class="advisor-interests">
+              <li>人機互動設計<span class="en">Human-Computer Interaction</span></li>
+              <li>醫療與人因工程<span class="en">Healthcare and Ergonomics</span></li>
+              <li>社群商務<span class="en">Social Commerce</span></li>
+              <li>使用者經驗研究<span class="en">User Experience Research</span></li>
+              <li>大數據應用<span class="en">Big Data Applications</span></li>
+              <li>AI 與人機協同合作<span class="en">AI &amp; Human-Robot Collaboration</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="section-back"><a href="#cat-jump">↑ 回到實驗室成員分類</a></p>
+    </div>
+  </section>
+
+  <section id="cochair" aria-labelledby="cochair-title">
+    <div class="wrap">
+      <h2 class="cat-section-title" id="cochair-title">共同主持人</h2>
+      <div class="member-grid">
+        <a class="member-card-link" href="https://mis.nkust.edu.tw/p/404-1097-65400.php?Lang=zh-tw" target="_blank" rel="noopener">
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/PD/蔡耀德.png" alt="蔡耀德照片" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">蔡耀德</h3>
+          <span class="member-role">共同主持人</span>
+          <div class="member-skills-label">擅長領域</div>
+          <ul class="member-skills">
+            <li>供應鏈管理</li>
+            <li>智慧醫療</li>
+          </ul>
+        </div>
+        </a>
+      </div>
+      <p class="section-back"><a href="#cat-jump">↑ 回到實驗室成員分類</a></p>
+    </div>
+  </section>
+
+  <section id="phd" aria-labelledby="phd-title">
+    <div class="wrap">
+      <h2 class="cat-section-title" id="phd-title">博士班</h2>
+      <div class="member-grid">
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/博士生/林佩怡6.png" alt="林佩怡照片" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">林佩怡</h3>
+          <span class="member-role">博士班</span>
+          <div class="member-skills-label">擅長領域</div>
+          <ul class="member-skills">
+            <li>溝通協調</li>
+            <li>智慧醫療</li>
+          </ul>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/博士生/王豪浥3.png" alt="王豪浥照片" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">王豪浥</h3>
+          <span class="member-role">博士班</span>
+          <div class="member-skills-label">擅長領域</div>
+          <ul class="member-skills">
+            <li>電子商務</li>
+            <li>使用性評估與測試</li>
+          </ul>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/博士生/李蕙萍2.png" alt="李蕙萍照片" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">李蕙萍</h3>
+          <span class="member-role">博士班</span>
+          <div class="member-skills-label">擅長領域</div>
+          <ul class="member-skills">
+            <li>OSH</li>
+            <li>Ergonomics Prevention of MSDs</li>
+          </ul>
+        </div>
+      </div>
+      <p class="section-back"><a href="#cat-jump">↑ 回到實驗室成員分類</a></p>
+    </div>
+  </section>
+
+  <section id="master" aria-labelledby="master-title">
+    <div class="wrap">
+      <h2 class="cat-section-title" id="master-title">碩士班</h2>
+      <div class="member-grid">
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/碩二生/陳仕航.png" alt="陳仕航照片" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">陳仕航</h3>
+          <span class="member-role">碩士班 一般組</span>
+          <div class="member-skills-label">擅長領域</div>
+          <ul class="member-skills">
+            <li>XR Development</li>
+            <li>Java Development</li>
+          </ul>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/碩二生/陳岳群.png" alt="陳岳群照片" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">陳岳群</h3>
+          <span class="member-role">碩士班 一般組</span>
+          <div class="member-skills-label">擅長領域</div>
+          <ul class="member-skills">
+            <li>找尋自我中...</li>
+            <li>不知要找多久...</li>
+          </ul>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/碩二生/楊子誼.png" alt="楊子誼照片" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">楊子誼</h3>
+          <span class="member-role">碩士班 一般組</span>
+          <div class="member-skills-label">擅長領域</div>
+          <ul class="member-skills">
+            <li>Image Recognition</li>
+            <li>Python</li>
+          </ul>
+        </div>
+
+		 <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/碩一生/吳瑋庭.png" alt="吳瑋庭照片" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">吳瑋庭</h3>
+          <span class="member-role">碩士班 一般組</span>
+          <div class="member-skills-label">擅長領域</div>
+          <ul class="member-skills">
+            <li>Web Design</li>
+            <li>Python</li>
+          </ul>
+        </div>
+		<div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/碩一生/郭俐辰.png" alt="郭俐辰照片" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">郭俐辰</h3>
+          <span class="member-role">碩士班 一般組</span>
+          <div class="member-skills-label">擅長領域</div>
+          <ul class="member-skills">
+            <li>Service Design</li>
+            <li>Interpersonal Communication</li>
+          </ul>
+        </div>
+		 <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/碩一生/朱育萱.png" alt="朱育萱照片" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">朱育萱</h3>
+          <span class="member-role">碩士班 一般組</span>
+          <div class="member-skills-label">擅長領域</div>
+          <ul class="member-skills">
+            <li>Web Design</li>
+            <li>Python</li>
+          </ul>
+        </div>
+		<div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/碩一生/楊詠涵.png" alt="楊詠涵照片" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">楊詠涵</h3>
+          <span class="member-role">碩士班 一般組</span>
+          <div class="member-skills-label">擅長領域</div>
+          <ul class="member-skills">
+            <li>UI/UX</li>
+            <li>Python</li>
+          </ul>
+        </div>
+		
+		
+      </div>
+      <p class="section-back"><a href="#cat-jump">↑ 回到實驗室成員分類</a></p>
+    </div>
+  </section>
+
+  <!--<section id="honors" aria-labelledby="honors-title">
+    <div class="wrap">
+      <h2 class="cat-section-title" id="honors-title">大學部－技優生</h2>
+      <div class="member-grid">
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/大四生/許菫雯.png" alt="許菫雯照片" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">許菫雯</h3>
+          <span class="member-role">大學部 技優生</span>
+          <div class="member-skills-label">擅長領域</div>
+          <ul class="member-skills">
+            <li>Making Presentation</li>
+            <li>Word Processing</li>
+          </ul>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/大四生/黃楷烜.png" alt="黃楷烜照片" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">黃楷烜</h3>
+          <span class="member-role">大學部 技優生</span>
+          <div class="member-skills-label">擅長領域</div>
+          <ul class="member-skills">
+            <li>Java</li>
+            <li>Front-end Development</li>
+          </ul>
+        </div>
+      </div>
+      <p class="section-back"><a href="#cat-jump">↑ 回到實驗室成員分類</a></p>
+    </div>
+  </section>--!>
+
+  <section id="undergrad" aria-labelledby="undergrad-title">
+    <div class="wrap">
+      <h2 class="cat-section-title" id="undergrad-title">實驗室專題生</h2>
+      <div class="member-grid">
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/大四生/邱靖芸.png" alt="邱靖芸照片" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">邱靖芸</h3>
+          <span class="member-role">大學部 專題生</span>
+          <div class="member-skills-label">擅長領域</div>
+          <ul class="member-skills">
+            <li>人工智慧應用</li>
+            <li>文書處理</li>
+          </ul>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/大四生/徐士宸.png" alt="徐士宸照片" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">徐士宸</h3>
+          <span class="member-role">大學部 專題生</span>
+          <div class="member-skills-label">擅長領域</div>
+          <ul class="member-skills">
+            <li>人際溝通</li>
+            <li>Java 程式設計</li>
+          </ul>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/大四生/廖子緣.png" alt="廖子緣照片" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">廖子緣</h3>
+          <span class="member-role">大學部 專題生</span>
+          <div class="member-skills-label">擅長領域</div>
+          <ul class="member-skills">
+            <li>Python 開發</li>
+            <li>人工智慧應用</li>
+          </ul>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/大四生/陳宥蓁.png" alt="陳宥蓁照片" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">陳宥蓁</h3>
+          <span class="member-role">大學部 專題生</span>
+          <div class="member-skills-label">擅長領域</div>
+          <ul class="member-skills">
+            <li>Arduino</li>
+            <li>溝通協調</li>
+          </ul>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/大四生/裴玉萍.png" alt="裴玉萍照片" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">裴玉萍</h3>
+          <span class="member-role">大學部 專題生</span>
+          <div class="member-skills-label">擅長領域</div>
+          <ul class="member-skills">
+            <li>Java</li>
+            <li>文書處理</li>
+          </ul>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">
+            <span class="ring" aria-hidden="true"></span>
+            <div class="member-photo-circle">
+              <img src="images/team/大四生/許筑翕.png" alt="許筑翕照片" onerror="this.style.display='none';">
+            </div>
+          </div>
+          <h3 class="member-name">許筑翕</h3>
+          <span class="member-role">大學部 專題生</span>
+          <div class="member-skills-label">擅長領域</div>
+          <ul class="member-skills">
+            <li>Java 程式設計</li>
+            <li>文件編寫</li>
+          </ul>
+        </div>
+      </div>
+      <p class="section-back"><a href="#cat-jump">↑ 回到實驗室成員分類</a></p>
+    </div>
+  </section>
+
+  <section id="alumni" aria-labelledby="alumni-title">
+    <div class="wrap">
+      <h2 class="cat-section-title" id="alumni-title">畢業生</h2>
+      <p class="cat-section-lede">歷屆畢業成員的擅長領域紀錄，依畢業學年度分列。</p>
+	  <h3 class="cat-section-title" style="font-size:17px;margin:36px 0 16px;">115 學年度畢業生</h3>
+      <div class="alumni-list">
+        <div class="alumni-item"><span class="yr">115 學年度</span><span class="name">白宜婷</span><span class="note">碩士班 一般組｜Web Design ・ Java Development</span></div>
+        <div class="alumni-item"><span class="yr">115 學年度</span><span class="name">林曉範</span><span class="note">碩士班 一般組｜Project Management ・ MR Development</span></div>
+        <div class="alumni-item"><span class="yr">115 學年度</span><span class="name">洪崇文</span><span class="note">碩士班 一般組｜Data Analysis ・ UIUX Design</span></div>
+        <div class="alumni-item"><span class="yr">115 學年度</span><span class="name">徐敏容</span><span class="note">碩士班 一般組｜App Development ・ Tiger Rotten</span></div>
+        <div class="alumni-item"><span class="yr">115 學年度</span><span class="name">簡言蓁</span><span class="note">碩士班 一般組｜Python ・ Negotiating Skill</span></div>
+        <div class="alumni-item"><span class="yr">115 學年度</span><span class="name">許菫雯</span><span class="note">大學部 技優生｜Making Presentation ・ Word Processing</span></div>
+        <div class="alumni-item"><span class="yr">115 學年度</span><span class="name">黃楷烜</span><span class="note">大學部 專提生｜Java ・ Front-end Development</span></div>
+		<div class="alumni-item"><span class="yr">115 學年度</span><span class="name">徐毓廷</span><span class="note">大學部 專提生｜R Programming ・ Word Processing</span></div> 
+		<div class="alumni-item"><span class="yr">115 學年度</span><span class="name">張鈞瑋</span><span class="note">大學部 專提生｜Python Development ・ UI Design</span></div>
+      </div>
+	  
+      <h3 class="cat-section-title" style="font-size:17px;margin:36px 0 16px;">114 學年度畢業生</h3>
+      <div class="alumni-list">
+        <div class="alumni-item"><span class="yr">114 學年度</span><span class="name">劉憶寬</span><span class="note">碩士班 一般組｜找尋自我中... ・ 不知要找多久...</span></div>
+        <div class="alumni-item"><span class="yr">114 學年度</span><span class="name">黃瑀淮</span><span class="note">大學部 專題生｜找尋自我中... ・ 還在尋找中～～</span></div>
+        <div class="alumni-item"><span class="yr">114 學年度</span><span class="name">劉芸廷</span><span class="note">大學部 專題生｜網頁設計 ・ 文書處理</span></div>
+        <div class="alumni-item"><span class="yr">114 學年度</span><span class="name">邱楊智</span><span class="note">大學部 專題生｜文書處理 ・ 談判技巧</span></div>
+        <div class="alumni-item"><span class="yr">114 學年度</span><span class="name">龔倢</span><span class="note">大學部 專題生｜網頁設計 ・ 混合實境開發</span></div>
+        <div class="alumni-item"><span class="yr">114 學年度</span><span class="name">陳盈臻</span><span class="note">大學部 專題生｜Java 全端開發 ・ Python 開發</span></div>
+        <div class="alumni-item"><span class="yr">114 學年度</span><span class="name">林秭礽</span><span class="note">大學部 專題生｜網頁全端開發 ・ 混合實境開發</span></div>
+        <div class="alumni-item"><span class="yr">114 學年度</span><span class="name">陳欣妤</span><span class="note">大學部 專題生｜文書處理 ・ 談判技巧</span></div>
+        <div class="alumni-item"><span class="yr">114 學年度</span><span class="name">王瑋翎</span><span class="note">大學部 專題生｜UIUX 設計 ・ 數據分析</span></div>
+      </div>
+
+      <h3 class="cat-section-title" style="font-size:17px;margin:36px 0 16px;">113 學年度畢業生</h3>
+      <div class="alumni-list">
+        <div class="alumni-item"><span class="yr">113 學年度</span><span class="name">何承翰</span><span class="note">碩士班 一般組｜程式設計 ・ 後端網頁設計</span></div>
+        <div class="alumni-item"><span class="yr">113 學年度</span><span class="name">劉宜靜</span><span class="note">碩士班 一般組｜文案撰寫 ・ 平面設計</span></div>
+        <div class="alumni-item"><span class="yr">113 學年度</span><span class="name">陳靖慈</span><span class="note">碩士班 一般組｜協調溝通 ・ 介面設計</span></div>
+        <div class="alumni-item"><span class="yr">113 學年度</span><span class="name">陳冠穎</span><span class="note">碩士班 一般組｜前後端網站 ・ APP 開發</span></div>
+        <div class="alumni-item"><span class="yr">113 學年度</span><span class="name">吳佩瑜</span><span class="note">大學部 專題生｜網頁設計 ・ 文書處理</span></div>
+        <div class="alumni-item"><span class="yr">113 學年度</span><span class="name">林兪丞</span><span class="note">大學部 專題生｜Python ・ 文書處理</span></div>
+        <div class="alumni-item"><span class="yr">113 學年度</span><span class="name">王貿新</span><span class="note">大學部 專題生｜Unity ・ 遊戲設計</span></div>
+        <div class="alumni-item"><span class="yr">113 學年度</span><span class="name">黃梃样</span><span class="note">大學部 專題生｜撰寫文案 ・ 溝通協調</span></div>
+        <div class="alumni-item"><span class="yr">113 學年度</span><span class="name">林連恩</span><span class="note">大學部 專題生｜文書處理 ・ 程式設計</span></div>
+      </div>
+
+      <h3 class="cat-section-title" style="font-size:17px;margin:36px 0 16px;">112 學年度畢業生</h3>
+      <div class="alumni-list">
+        <div class="alumni-item"><span class="yr">112 學年度</span><span class="name">邱伯智</span><span class="note">博士班｜學術期刊 ・ 研究企劃書撰寫</span></div>
+        <div class="alumni-item"><span class="yr">112 學年度</span><span class="name">黃心瑜</span><span class="note">碩士班 一般組｜視覺設計 ・ 電腦繪圖</span></div>
+        <div class="alumni-item"><span class="yr">112 學年度</span><span class="name">賴柏嘉</span><span class="note">碩士班 一般組｜Python ・ 電子商務</span></div>
+        <div class="alumni-item"><span class="yr">112 學年度</span><span class="name">林悅如</span><span class="note">大學部 專題生｜企劃撰寫 ・ 溝通協調</span></div>
+        <div class="alumni-item"><span class="yr">112 學年度</span><span class="name">劉昌儒</span><span class="note">大學部 專題生｜創業企劃 ・ 專案管理</span></div>
+        <div class="alumni-item"><span class="yr">112 學年度</span><span class="name">林亞芳</span><span class="note">大學部 專題生｜電腦繪圖 ・ 美術設計</span></div>
+        <div class="alumni-item"><span class="yr">112 學年度</span><span class="name">高翊馨</span><span class="note">大學部 專題生｜網頁設計 ・ 美工設計</span></div>
+        <div class="alumni-item"><span class="yr">112 學年度</span><span class="name">張珮君</span><span class="note">大學部 專題生｜程式撰寫 ・ 美工文書</span></div>
+        <div class="alumni-item"><span class="yr">112 學年度</span><span class="name">許琇喬</span><span class="note">大學部 專題生｜企劃構想 ・ 統籌協調</span></div>
+      </div>
+
+      <h3 class="cat-section-title" style="font-size:17px;margin:36px 0 16px;">111 學年度畢業生</h3>
+      <div class="alumni-list">
+        <div class="alumni-item"><span class="yr">111 學年度</span><span class="name">胥佩君</span><span class="note">碩士班 一般組｜網頁設計 ・ 多媒體網頁設計</span></div>
+        <div class="alumni-item"><span class="yr">111 學年度</span><span class="name">林婉瑧</span><span class="note">碩士班 電子商務組｜網路行銷 ・ 多媒體網頁設計</span></div>
+        <div class="alumni-item"><span class="yr">111 學年度</span><span class="name">曾建智</span><span class="note">碩士班 一般組｜程式設計 ・ 前後端網頁設計</span></div>
+        <div class="alumni-item"><span class="yr">111 學年度</span><span class="name">阮琮文</span><span class="note">碩士班 一般組｜系統介面設計 ・ 網頁設計</span></div>
+        <div class="alumni-item"><span class="yr">111 學年度</span><span class="name">蕭宗朋</span><span class="note">碩士班 一般組｜演算法設計 ・ 深度學習</span></div>
+        <div class="alumni-item"><span class="yr">111 學年度</span><span class="name">蔣長珅</span><span class="note">大學部 技優生｜Python 程式設計 ・ 金融相關程式設計</span></div>
+        <div class="alumni-item"><span class="yr">111 學年度</span><span class="name">黃琦雯</span><span class="note">大學部 專題生｜軟體開發 ・ 程式設計</span></div>
+        <div class="alumni-item"><span class="yr">111 學年度</span><span class="name">溫玉婕</span><span class="note">大學部 專題生｜角色設計＆企劃構想 ・ 夢想當一條鹹魚</span></div>
+        <div class="alumni-item"><span class="yr">111 學年度</span><span class="name">蔡佳蓁</span><span class="note">大學部 專題生｜角色設計＆模型製作 ・ 夢想當一顆馬鈴薯</span></div>
+        <div class="alumni-item"><span class="yr">111 學年度</span><span class="name">黃湘雲</span><span class="note">大學部 專題生｜介面設計 ・ 美工設計</span></div>
+      </div>
+
+      <p style="margin-top:24px;font-size:13.5px;color:var(--ink-faint);font-family:var(--mono);"></p>
+	  <p class="section-back">
+		<a href="#cat-jump" class="section-back-icon" aria-label="回到實驗室成員分類">
+			<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+				<line x1="12" y1="19" x2="12" y2="5"></line>
+				<polyline points="5 12 12 5 19 12"></polyline>
+			</svg>
+		</a>
+	  </p>
+    </div>
+  </section>
+
+  <a href="#top" class="back-to-top" id="backToTop" aria-label="回到頁面最上層">↑</a>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    人機互動與智慧科技實驗室 · Lab for Human-Computer Interaction and Smart Technology · NKUST 資訊管理系
+    <div class="foot-links">
+      <a href="index.html">首頁</a><a href="about.html">關於實驗室</a><a href="faq.html">常見問題</a><a href="mailto:kwsu@nkust.edu.tw">聯絡信箱</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+<script>
+  document.getElementById('backToTop').addEventListener('click', function(e){
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+
+</body></html>

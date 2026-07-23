@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Achievements | Lab. for Human-Computer Interaction and Smart Technology · NKUST</title>
+<meta name="description" content="Awards, NSTC research grants, and academic service honors of the Lab for Human-Computer Interaction and Smart Technology.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  /* ---- achievements page-specific styles (extends the shared stylesheet) ---- */
+  .ach-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden; margin:28px 0 40px; }
+  .ach-stat { background:#fff; padding:20px 18px; text-align:center; }
+  .ach-stat .num { display:block; font-family:var(--mono); font-size:clamp(22px,3vw,32px); font-weight:700; }
+  .ach-stat .lbl { display:block; margin-top:4px; font-size:13px; color:var(--ink-soft); }
+
+  .ach-filter { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:28px; }
+
+  .ach-section-title { font-size:15px; font-weight:700; letter-spacing:.02em; margin:0 0 18px; padding-top:8px; }
+  .ach-section-title .cnt { font-family:var(--mono); font-weight:400; color:var(--ink-faint); margin-left:8px; }
+
+  .grant-card { display:flex; flex-direction:column; gap:6px; }
+  .grant-card .code { font-family:var(--mono); font-size:12.5px; color:var(--ink-faint); }
+
+  .ach-card{ height:100%; }
+  .ach-date{ font-family:var(--mono); font-size:12px; color:var(--ink-faint); }
+  .ach-people{ margin-top:auto; padding-top:.6rem; border-top:1px dashed var(--line); font-size:13px; color:var(--ink-soft); }
+  .ach-people .label{ font-weight:700; color:var(--ink); margin-right:.35em; }
+
+  .award-present{
+    background:var(--card); color:var(--ink-soft); border:1px solid var(--line);
+    text-shadow:none; box-shadow:none;
+  }
+
+  .honor-panel { border:1px solid var(--line); border-radius:12px; padding:28px 30px; display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+  .honor-panel h4 { margin:0 0 12px; font-size:14px; letter-spacing:.02em; color:var(--ink-soft); }
+  .honor-panel ul { margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:9px; }
+  .honor-panel li { font-size:14.5px; line-height:1.5; padding-left:14px; position:relative; }
+  .honor-panel li::before { content:"·"; position:absolute; left:0; color:var(--ink-faint); }
+
+  .ach-more { text-align:center; margin-top:8px; }
+
+  [data-ach-hidden="true"] { display:none !important; }
+
+  @media (max-width:720px){
+    .ach-stats{ grid-template-columns:repeat(2,1fr); }
+    .honor-panel{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site">
+  <div class="nav-row">
+    <a class="brand" href="index-en.html">
+      <img class="brand-logo" src="assets/nkust-logo.png" alt="NKUST logo">
+      <span class="brand-text">
+        <span class="brand-zh">Lab. for Human-Computer Interaction and Smart Technology</span>
+        <span class="brand-en">National Kaohsiung University of Science and Technology</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+    <nav class="primary" id="primary-nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="index-en.html">Home</a></li>
+        <li><a href="about-en.html">About</a></li>
+        <li><a href="news-en.html">News</a></li>
+        <li><a href="activities-en.html">Activities</a></li>
+        <li><a href="videos-en.html">Videos</a></li>
+        <li><a href="achievements-en.html" aria-current="page">Achievements</a></li>
+        <li><a href="members-en.html">Members</a></li>
+        <li><a href="faq-en.html">FAQ</a></li>
+        <li class="nav-lang"><a href="achievements.html" lang="zh-Hant">中文</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero" data-screen-label="Achievements">
+    <div class="wrap">
+      <p class="breadcrumb"><a href="index-en.html">Home</a> / Achievements</p>
+      <p class="eyebrow">ACHIEVEMENTS</p>
+      <h1 class="page-title">Achievements &amp; Honors</h1>
+      <p class="page-lede">A compilation of student competition awards, Prof. Su's NSTC/MOST research grants over the years, and academic service and honors within the research community.</p>
+
+      <div class="ach-stats" role="group" aria-label="Achievement statistics">
+        <div class="ach-stat"><span class="num" data-count-to="29">0</span><span class="lbl">Competition Awards</span></div>
+        <div class="ach-stat"><span class="num" data-count-to="60" data-count-suffix="+">0</span><span class="lbl">Research Grants Led (Career)</span></div>
+        <div class="ach-stat"><span class="num" data-count-to="16">0</span><span class="lbl">International Journal Reviews / Publications</span></div>
+        <div class="ach-stat"><span class="num" data-count-to="3">0</span><span class="lbl">Current Society Board Positions</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="ach-title">
+    <div class="wrap">
+      <h2 class="section-title" id="ach-title" style="position:absolute;left:-9999px;">Achievements Filter &amp; List</h2>
+
+      <div class="ach-filter" role="group" aria-label="Filter achievements by category">
+        <button class="filter-chip" data-ach-filter="all" aria-pressed="true">All</button>
+        <button class="filter-chip" data-ach-filter="award" aria-pressed="false">Competitions &amp; Awards</button>
+        <button class="filter-chip" data-ach-filter="grant" aria-pressed="false">Research Grants</button>
+      </div>
+
+      <!-- Competitions & Awards -->
+      <div data-ach-group="award">
+        <h3 class="ach-section-title">Competitions &amp; Awards<span class="cnt">29</span></h3>
+        <div class="ach-grid">
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-honorable">Honorable Mention</span>
+            <span class="ach-date">2024.07</span>
+            <h4>Advised a student in the "2024 National Industrial Engineering and Management Master's Thesis Competition."</h4>
+            <p class="ach-people"><span class="label">Team Members:</span>Ching-Tzu Chen</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-gold">Gold Award</span>
+            <span class="ach-date">2024.06</span>
+            <h4>Advised students in the "2024 Capstone Project Competition," project【Using Mixed Reality to Improve the Doctor-Patient Relationship】.</h4>
+            <p class="ach-people"><span class="label">Team Members:</span>Tzu-Reng Lin, Hsin-Yu Chen, Wei-Ling Wang</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-gold">Gold Award</span>
+            <span class="ach-date">2024.06</span>
+            <h4>Advised students in the "2024 Capstone Project Competition," project【A Rehabilitation Assistance System Based on Pose Recognition and HoloLens2 — for Stroke Patients】.</h4>
+            <p class="ach-people"><span class="label">Team Members:</span>Chieh Kung, Ying-Chen Chen, Yang-Chih Chiu, Yun-Ting Liu</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-2nd">2nd Place</span>
+            <span class="ach-date">2024.05</span>
+            <h4>Advised students in the "2024 National Industrial Engineering and Management Undergraduate Paper Competition," Ergonomics & Design Track.</h4>
+            <p class="ach-people"><span class="label">Team Members:</span>Tzu-Reng Lin, Hsin-Yu Chen, Wei-Ling Wang</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-1st">1st Place</span>
+            <span class="ach-date">2024.05</span>
+            <h4>Advised students in the "2024 National Industrial Engineering and Management Undergraduate Paper Competition," Big Data & Analytics Track.</h4>
+            <p class="ach-people"><span class="label">Team Members:</span>Chieh Kung, Ying-Chen Chen, Yang-Chih Chiu, Yun-Ting Liu</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-1st">Best Paper Award</span>
+            <span class="ach-date">2024</span>
+            <h4>Presented at the 2nd International Conference on Intelligent Science and Sustainable Development (ISASD 2024): "Immersive Technology in Healthcare Education for Acceptance: OSCE."</h4>
+            <p class="ach-people"><span class="label">Team Members:</span>Pei-Yi Lin, Eric Kin-Lap Lee, Kuo-Wei Su</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-honorable">Honorable Mention</span>
+            <span class="ach-date">2023.11</span>
+            <h4>Advised students in the "28th Collegiate Information Application Service Innovation Competition," Open Education Data Track, project【Edu Maker BnB】.</h4>
+            <p class="ach-people"><span class="label">Team Members:</span>Yi-Hsiang Liao, Chih-Yuan Huang, Kai-Hsuan Huang, Yi-Ching Kuan</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-3rd">3rd Place</span>
+            <span class="ach-date">2023.06</span>
+            <h4>Advised students in the "2023 Capstone Project Competition," project【AR Experience Menu】.</h4>
+            <p class="ach-people"><span class="label">Team Members:</span>Hsiao-Fan Lin, Chung-Wen Hung, Pei-Yu Wu</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-honorable">Honorable Mention (Graduate Track)</span>
+            <span class="ach-date">2022.11</span>
+            <h4>Advised students in the "2022 Contextual Intelligence Society Student Capstone & Research Competition," project【Usability Evaluation of a City-Promotion Website — Zuozhen Gongguan】.</h4>
+            <p class="ach-people"><span class="label">Team Members:</span>Wan-Chen Lin, Bo-Chia Lai</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-3rd">3rd Place (Graduate Track)</span>
+            <span class="ach-date">2022.11</span>
+            <h4>Advised students in the "2022 Contextual Intelligence Society Student Capstone & Research Competition," project【Usability Study on AR-Integrated E-Commerce Across Devices — Amazon Case】.</h4>
+            <p class="ach-people"><span class="label">Team Members:</span>Pei-Chun Hsu, Hsin-Yu Huang</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-present">Conference Presentation</span>
+            <span class="ach-date">2022.11</span>
+            <h4>Presented at the "2022 Annual Conference of the Chinese Institute of Industrial Engineers": preliminary study evaluating AR interactive ad game marketing using the SEM-CPU method.</h4>
+            <p class="ach-people"><span class="label">Team Members:</span>Jih-Tso Chang, Hsin-Yu Huang, Bo-Chia Lai, Chao-Hung Wang, Yi-Ching Liu, Cheng-Han Ho</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-2nd">2nd Place (Undergraduate Track)</span>
+            <span class="ach-date">2022.11</span>
+            <h4>Advised students in the "2022 Contextual Intelligence Society AMIE Paper Competition," project【Developing a User-Experience-Driven Chatbot for a Hospital Cancer Center】.</h4>
+            <p class="ach-people"><span class="label">Team Members:</span>Hsiu-Chiao Hsu, Pei-Chun Chang, Yueh-Ju Lin</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-present">Conference Paper</span>
+            <span class="ach-date">2022</span>
+            <h4>Presented at The 6th International Conference on Ambient Intelligence and Ergonomics: "Changes of pharmaceutical care in medical institutions under the epidemic."</h4>
+            <p class="ach-people"><span class="label">Team Members:</span>Pei-Yi Lin, Eric Kin-Lap Lee, Chen-Ju Hung, Kuo-Wei Su, Chao-Hung Wang, Po-Chih Chiu</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-3rd">3rd Place (Undergraduate Track)</span>
+            <span class="ach-date">2022.11</span>
+            <h4>Advised students in the "2022 Contextual Intelligence Society AMIE Paper Competition," project【Building an AR Digital Guide with Interface Design Guidelines to Promote Food & Agriculture Education】.</h4>
+            <p class="ach-people"><span class="label">Team Members:</span>Chang-Ju Liu, Yi-Hsin Kao, Ya-Fang Lin</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-present">Conference Presentation</span>
+            <span class="ach-date">2022.11</span>
+            <h4>Presented at the "2022 Annual Conference of the Chinese Institute of Industrial Engineers": Building an AR Digital Guide with Interface Design Guidelines to Promote Food & Agriculture Education.</h4>
+            <p class="ach-people"><span class="label">Team Members:</span>Kuo-Wei Su, Chang-Ju Liu, Yi-Hsin Kao, Ya-Fang Lin, Ching-Tzu Chen</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-present">Conference Presentation</span>
+            <span class="ach-date">2022.11</span>
+            <h4>Presented at the "2022 Annual Conference of the Chinese Institute of Industrial Engineers": Developing a User-Experience-Driven Chatbot for a Hospital Cancer Center.</h4>
+            <p class="ach-people"><span class="label">Team Members:</span>Kuo-Wei Su, Hsiu-Chiao Hsu, Pei-Chun Chang, Yueh-Ju Lin</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-present">Industry Collaboration</span>
+            <span class="ach-date">2022.09</span>
+            <h4>Participated in the AI Industry-Academia Alliance project: Fruit & Vegetable Cultivation Management Expert System.</h4>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-present">Industry Collaboration</span>
+            <span class="ach-date">2022.09</span>
+            <h4>Participated in the AI Industry-Academia Alliance project: AR Micro-Advertising System.</h4>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-3rd">3rd Place</span>
+            <span class="ach-date">2022.06</span>
+            <h4>Advised students in the "2022 National Industrial Engineering and Management Undergraduate Paper Competition," Ergonomics & Design Track, project【Building and Usability Testing of an AR Digital Guide to Promote Food & Agriculture Education】.</h4>
+            <p class="ach-people"><span class="label">Team Members:</span>Chang-Ju Liu, Yi-Hsin Kao, Ya-Fang Lin</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-present">Conference Presentation</span>
+            <span class="ach-date">2022.03</span>
+            <h4>Presented at the "EST2022 Annual Conference of the Ergonomics Society of Taiwan": WebAR Game-Marketing Smart Guide System for Epidemic Prevention — Aviation Education Exhibition Hall Case.</h4>
+            <p class="ach-people"><span class="label">Team Members:</span>Hsin-Yu Huang, Pei-Chun Chang, Mao-Hsin Wang, Min-Jung Hsu, Hsiao-Fan Lin</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-honorable">Honorable Mention (Graduate Track)</span>
+            <span class="ach-date">2022</span>
+            <h4>Advised students in the "2022 29th Annual Conference of the Ergonomics Society of Taiwan" student paper competition, project【Applying Design Principles and Usability Evaluation to Develop a Sustainable Mobile App】.</h4>
+            <p class="ach-people"><span class="label">Team Members:</span>Pei-Szu Teng, Wan-Chen Lin, Pei-Chun Hsu, Bo-Chia Lai</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-honorable">Honorable Mention</span>
+            <span class="ach-date">2021.11</span>
+            <h4>Advised students in the "2021 UN SDGs Youth Initiative English Proposal Competition."</h4>
+            <p class="ach-people"><span class="label">Team Members:</span>Hsiao-Fan Lin, Chung-Wen Hung, Pei-Yu Wu</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-gold">Excellence Award</span>
+            <span class="ach-date">2021.10</span>
+            <h4>Advised a student in the "14th Chung Yueh Thesis Award," Master's Track — AI/Informatics.</h4>
+            <p class="ach-people"><span class="label">Team Members:</span>Wen-Lan Wang</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-1st">1st Place (Group B)</span>
+            <span class="ach-date">2021.08</span>
+            <h4>Advised students in the "NUWA Creative Robotics Competition," project【Kebbi Pandemic-Prevention Assistant】.</h4>
+            <p class="ach-people"><span class="label">Team Members:</span>Hsiu-Chiao Hsu, Pei-Chun Chang, Yueh-Ju Lin</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-1st">1st Place</span>
+            <span class="ach-date">2021.07</span>
+            <h4>Advised students in the "2021 Chinese Institute of Industrial Engineers Undergraduate Paper Competition," Ergonomics & Design Track.</h4>
+            <p class="ach-people"><span class="label">Team Members:</span>Chi-Wen Huang, Hsiang-Yun Huang, Chia-Chen Tsai, Yu-Chieh Wen</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-honorable">First Class Honors</span>
+            <span class="ach-date">2021.06</span>
+            <h4>Advised students in the "2021 Interdisciplinary Information Intelligence Innovation Capstone Competition."</h4>
+            <p class="ach-people"><span class="label">Team Members:</span>Chi-Wen Huang, Hsiang-Yun Huang, Chia-Chen Tsai, Yu-Chieh Wen</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-gold">Winner & Honorable Mention</span>
+            <span class="ach-date">2020.12</span>
+            <h4>Advised students in the "2020 National Industrial Engineering and Management Master's Thesis Competition."</h4>
+            <p class="ach-people"><span class="label">Team Members:</span>Po-Chih Chiu, Wen-Lan Wang, Chueh-Jou Huang, Pei-Chun Hsu, Wan-Chen Lin, Chien-Chih Tseng, Chang-Shen Chiang</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-gold">Winner & Honorable Mention</span>
+            <span class="ach-date">2020.07</span>
+            <h4>Advised students in the "2020 National Industrial Engineering and Management Master's Thesis Competition."</h4>
+            <p class="ach-people"><span class="label">Team Members:</span>Yi-Chen Cheng, Yu-Feng Liu</p>
+          </div>
+          <div class="ach-card" data-ach-cat="award">
+            <span class="ach-badge award-present">Multiple Honors</span>
+            <span class="ach-date">2019</span>
+            <h4>Advised EMBA students who won the Malaysia International Invention Award (Environmental Energy category) gold medal, Thailand's Best Invention Award, and 2nd place in the Ministry of Economic Affairs' "Return Home to Start a Business" competition, among other honors.</h4>
+          </div>
+        </div>
+      </div>
+
+      <!-- Research Grants -->
+      <div data-ach-group="grant">
+        <h3 class="ach-section-title">Faculty &amp; Student Research Grants<span class="cnt">4</span></h3>
+        <div class="ach-grid">
+          <div class="ach-card" data-ach-cat="grant">
+            <span class="ach-badge award-grant">Ongoing</span>
+            <span class="ach-date">2024.06</span>
+            <h4>Advising a student on an NSTC Undergraduate Research Grant: "A Rehabilitation Assistance System Based on Pose Recognition and HoloLens2 — for Stroke Patients."</h4>
+            <p class="ach-people"><span class="label">Team Members:</span>Yang-Chih Chiu</p>
+          </div>
+          <div class="ach-card" data-ach-cat="grant">
+            <span class="ach-badge award-grant">Approved</span>
+            <span class="ach-date">2023</span>
+            <h4>NSTC research grant approved: "Design of an AR-Assisted System and Human-Factors Research Model for Human-Robot Collaboration in Smart Factories."</h4>
+          </div>
+          <div class="ach-card" data-ach-cat="grant">
+            <span class="ach-badge award-grant">Ongoing</span>
+            <span class="ach-date">2023.06</span>
+            <h4>Advising a student on an NSTC Undergraduate Research Grant: "Developing a Chatbot from an HCI Perspective for Long-Term Care and Nursing Settings."</h4>
+            <p class="ach-people"><span class="label">Team Members:</span>Yu-Cheng Lin</p>
+          </div>
+          <div class="ach-card" data-ach-cat="grant">
+            <span class="ach-badge award-grant">Awarded</span>
+            <span class="ach-date">2022.11</span>
+            <h4>A student was awarded an NSTC Undergraduate Research Grant: "Developing a User-Experience-Driven Chatbot for a Hospital Cancer Center."</h4>
+            <p class="ach-people"><span class="label">Team Members:</span>Hsiu-Chiao Hsu, Pei-Chun Chang, Yueh-Ju Lin</p>
+          </div>
+        </div>
+        <p class="ach-more"><a href="about-en.html" style="text-decoration:underline;">View Prof. Su's full grant history (60+ projects) →</a></p>
+      </div>
+
+    </div>
+  </section>
+
+  <section aria-labelledby="honor-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">ACADEMIC SERVICE</p>
+        <h2 class="section-title" id="honor-title">Academic Service &amp; Honors</h2>
+        <p>Prof. Kuo-Wei Su's current society positions, international journal editorial roles, and honors.</p>
+      </div>
+      <div class="honor-panel">
+        <div>
+          <h4>Current Society Positions</h4>
+          <ul>
+            <li>President, Ergonomics Society of Taiwan</li>
+            <li>Vice-President, Asian Council on Ergonomics and Design</li>
+            <li>Executive Director, Chinese Institute of Industrial Engineers</li>
+            <li>Editor-in-Chief, Journal of Ergonomics Study, Ergonomics Society of Taiwan</li>
+          </ul>
+        </div>
+        <div>
+          <h4>International Journal Editorial Roles &amp; Awards</h4>
+          <ul>
+            <li>Editorial Board Member, Journal of Ambient Intelligence and Humanized Computing</li>
+            <li>Editorial Board Member, Human Factors and Ergonomics in Manufacturing &amp; Service Industries</li>
+            <li>Editorial Board Member, Safety Science</li>
+            <li>Annual Youth Management Award, Kaohsiung City Branch of the Chinese Management Association (2014)</li>
+          </ul>
+        </div>
+      </div>
+      <p class="ach-more"><a href="about-en.html" style="text-decoration:underline;">Learn about Prof. Su's full background →</a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    Lab. for Human-Computer Interaction and Smart Technology · NKUST Dept. of Information Management
+    <div class="foot-links">
+      <a href="index-en.html">Home</a><a href="videos-en.html">Videos</a><a href="faq-en.html">FAQ</a><a href="mailto:kwsu@nkust.edu.tw">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+<script>
+  (function(){
+    // Count-up animation for stats: starts when scrolled into view
+    var nums = document.querySelectorAll('.num[data-count-to]');
+    var countObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        countObserver.unobserve(el);
+        var target = parseInt(el.getAttribute('data-count-to'), 10) || 0;
+        var suffix = el.getAttribute('data-count-suffix') || '';
+        var duration = 1100;
+        var start = null;
+        function step(ts){
+          if (start === null) start = ts;
+          var progress = Math.min((ts - start) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(eased * target) + suffix;
+          if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    }, { threshold: 0.4 });
+    nums.forEach(function(el){ countObserver.observe(el); });
+  })();
+  (function(){
+    var chips = document.querySelectorAll('.ach-filter [data-ach-filter]');
+    var cards = document.querySelectorAll('[data-ach-cat]');
+    var groups = document.querySelectorAll('[data-ach-group]');
+    chips.forEach(function(chip){
+      chip.addEventListener('click', function(){
+        chips.forEach(function(c){ c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'); });
+        var filter = chip.getAttribute('data-ach-filter');
+        groups.forEach(function(g){
+          g.setAttribute('data-ach-hidden', (filter !== 'all' && g.getAttribute('data-ach-group') !== filter) ? 'true' : 'false');
+        });
+      });
+    });
+  })();
+</script>
+
+
+</body></html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>影音專區 | 人機互動與智慧科技實驗室 · NKUST</title>
+<meta name="description" content="人機互動與智慧科技實驗室的研究成果展示影片、專題發表紀錄與媒體採訪。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  /* 影片縮圖尺寸調整（適中大小，維持比例並統一裁切） */
+  .media-thumb {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    display: block;
+  }
+  .media-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.25s ease;
+  }
+  .media-thumb:hover img {
+    transform: scale(1.04);
+  }
+
+  /* 讓每張卡片等高，並把「參與學生」固定對齊在卡片底部 */
+  .card-grid {
+    align-items: stretch;
+  }
+  .media-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .media-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .media-body .desc {
+    margin: 0 0 .75rem;
+  }
+  .media-body .members {
+    margin-top: auto;
+    padding-top: .65rem;
+    border-top: 1px dashed rgba(0,0,0,.12);
+    font-size: .92em;
+    color: #555;
+  }
+  .members .label {
+    font-weight: 700;
+    color: #333;
+    margin-right: .35em;
+  }
+
+  /* 得獎名次徽章 */
+  .award-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .3em;
+    padding: .2rem .7rem;
+    border-radius: 999px;
+    font-size: .82rem;
+    font-weight: 700;
+    letter-spacing: .02em;
+    margin: .4rem 0 .6rem;
+    width: fit-content;
+  }
+  .award-gold {
+    background: linear-gradient(135deg,#fff4cf,#ffdd7a);
+    color: #7a5900;
+    border: 1px solid #e0b429;
+  }
+  .award-honorable {
+    background: #eef1fb;
+    color: #3b4a9c;
+    border: 1px solid #b9c4ea;
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">跳到主要內容 / Skip to content</a>
+
+<header class="site">
+  <div class="nav-row">
+    <a class="brand" href="index.html">
+      <img class="brand-logo" src="assets/nkust-logo.png" alt="國立高雄科技大學校徽">
+      <span class="brand-text">
+        <span class="brand-zh">人機互動與智慧科技實驗室</span>
+        <span class="brand-en">Lab. for Human-Computer Interaction and Smart Technology</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">選單</button>
+    <nav class="primary" id="primary-nav" aria-label="主要導覽">
+      <ul>
+        <li><a href="index.html">首頁</a></li>
+        <li><a href="about.html">關於實驗室</a></li>
+        <li><a href="news.html">最新消息</a></li>
+        <li><a href="activities.html">實驗室活動</a></li>
+        <li><a href="videos.html" aria-current="page">影音專區</a></li>
+        <li><a href="achievements.html">研究成果</a></li>
+        <li><a href="members.html">實驗室成員</a></li>
+        <li><a href="faq.html">常見問題</a></li>
+        <li class="nav-lang"><a href="videos-en.html" lang="en">EN</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="breadcrumb"><a href="index.html">首頁</a> / 影音專區</p>
+      <p class="eyebrow">VIDEOS</p>
+      <h1 class="page-title">影音專區</h1>
+      <p class="page-lede">收錄實驗室的專題發表、系統展示與媒體採訪影片。目前頁面以版位預留呈現，待實際影片連結釋出後即可更新。</p>
+
+</div>
+  </section>
+
+  <section aria-labelledby="videos-title">
+    <div class="wrap">
+      <h2 class="section-title" id="videos-title" style="position:absolute;left:-9999px;">影片列表</h2>
+      <div class="card-grid">
+
+        <div class="media-card">
+          <a class="media-thumb" href="https://youtu.be/gsSmSNHT6Z0?si=EsoGh-U8wYheKdrK" target="_blank" rel="noopener" aria-label="觀看影片：2026年6月實務專題競賽 CareSight臨護視界">
+            <img src="images/Project/2026_CareSight臨護視界_佳.png" alt="project-1">
+          </a>
+          <div class="media-body">
+            <span class="n">實務專題競賽</span>
+            <h4>2026年6月實務專題競賽</h4>
+            <span class="award-badge award-honorable">🏅 佳作</span>
+            <p class="desc">指導學生參加「2026年實務專題競賽」，作品主題【CareSight臨護視界】。</p>
+            <p class="members"><span class="label">參與學生：</span>邱靖芸、廖子緣、徐士宸</p>
+          </div>
+        </div>
+
+        <div class="media-card">
+          <a class="media-thumb" href="https://www.youtube.com/watch?v=H20Yzf9yQgY" target="_blank" rel="noopener" aria-label="觀看影片：2026年6月實務專題競賽 應用混合實境與人因工程理念於護理注射技術訓練系統">
+            <img src="images/Project/2026_應用混合實境與人因工程理念於護理注射技術訓練系統_佳.png" alt="project-2">
+          </a>
+          <div class="media-body">
+            <span class="n">實務專題競賽</span>
+            <h4>2026年6月實務專題競賽</h4>
+            <span class="award-badge award-honorable">🏅 佳作</span>
+            <p class="desc">指導學生參加「2026年實務專題競賽」，作品主題【應用混合實境與人因工程理念於護理注射技術訓練系統】。</p>
+            <p class="members"><span class="label">參與學生：</span>許筑翕、裴玉萍、陳宥蓁</p>
+          </div>
+        </div>
+
+        <div class="media-card">
+          <a class="media-thumb" href="https://youtu.be/jTZUePMu8BU?si=XkQ7wVLJ-WPM1Ozd" target="_blank" rel="noopener" aria-label="觀看影片：2024年6月實務專題競賽 利用混合實境技術提升醫病關係之應用">
+            <img src="images/Project/2024_利用混合實境技術提升醫病關係之應用_金質獎.png" alt="project-3">
+          </a>
+          <div class="media-body">
+            <span class="n">實務專題競賽</span>
+            <h4>2024年6月實務專題競賽</h4>
+            <span class="award-badge award-gold">🏆 金質獎</span>
+            <p class="desc">指導學生參加「2024年實務專題競賽」，作品主題【利用混合實境技術提升醫病關係之應用】。</p>
+            <p class="members"><span class="label">參與學生：</span>林秭礽、陳欣妤、王瑋翎</p>
+          </div>
+        </div>
+
+        <div class="media-card">
+          <a class="media-thumb" href="https://www.youtube.com/watch?v=eh72Q7itUWQ" target="_blank" rel="noopener" aria-label="觀看影片：2024年6月實務專題競賽 基於姿態辨識技術結合HoloLens2之復健輔助系統開發">
+            <img src="images/Project/2024_基於姿態辨識技術結合HoloLens2之復健輔助系統開發以腦中風患者為例_金質獎.png" alt="project-4">
+          </a>
+          <div class="media-body">
+            <span class="n">實務專題競賽</span>
+            <h4>2024年6月實務專題競賽</h4>
+            <span class="award-badge award-gold">🏆 金質獎</span>
+            <p class="desc">指導學生參加「2024年實務專題競賽」，作品主題【基於姿態辨識技術結合HoloLens2之復健輔助系統開發-以腦中風患者為例】。</p>
+            <p class="members"><span class="label">參與學生：</span>龔倢、陳盈臻、邱楊智、劉芸廷</p>
+          </div>
+        </div>
+		
+		<div class="media-card">
+          <a class="media-thumb" href="" target="_blank" rel="noopener" aria-label="觀看影片：2023年6月實務專題競賽 AR Experience Menu">
+            <img src="images/Project/2023_AR Experience Menu_第三名.png" alt="project-5">
+          </a>
+          <div class="media-body">
+            <span class="n">實務專題競賽</span>
+            <h4>2023年6月實務專題競賽</h4>
+            <span class="award-badge award-3rd">🥉 第三名</span>
+            <p class="desc">指導學生參加「2023年實務專題競賽」，作品主題【AR Experience Menu】。</p>
+            <p class="members"><span class="label">參與學生：</span>林曉範、洪崇文、吳佩瑜</p>
+          </div>
+        </div>
+		
+		<div class="media-card">
+          <a class="media-thumb" href="https://youtu.be/C-P_AR80ePA?si=wTFzs19aCCAQhz35" target="_blank" rel="noopener" aria-label="觀看影片：2022年6月實務專題競賽 AR數位導覽之建置與使用性測試促進食農教育發展">
+            <img src="images/Project/2022_AR數位導覽之建置與使用性測試促進食農教育發展_第一名.png" alt="project-6">
+          </a>
+          <div class="media-body">
+            <span class="n">實務專題競賽</span>
+            <h4>2022年6月實務專題競賽</h4>
+            <span class="award-badge award-1st">🥇 第一名</span>
+            <p class="desc">指導學生參加「2022年實務專題競賽」，作品主題【AR數位導覽之建置與使用性測試促進食農教育發展】。</p>
+            <p class="members"><span class="label">參與學生：</span>林亞芳、高翊馨、劉昌儒</p>
+          </div>
+        </div>
+		
+		<div class="media-card">
+          <a class="media-thumb" href="https://www.youtube.com/watch?v=8rBeMkRJyRE" target="_blank" rel="noopener" aria-label="觀看影片：2022年6月實務專題競賽 開發具有使用者體驗的醫院癌症中心之對話機器人">
+            <img src="images/Project/2022_開發具有使用者體驗的醫院癌症中心之對話機器人_佳.png" alt="project-6">
+          </a>
+          <div class="media-body">
+            <span class="n">實務專題競賽</span>
+            <h4>2022年6月實務專題競賽</h4>
+            <span class="award-badge award-honorable">🏅 佳作</span>
+            <p class="desc">指導學生參加「2022年實務專題競賽」，作品主題【開發具有使用者體驗的醫院癌症中心之對話機器人】。</p>
+            <p class="members"><span class="label">參與學生：</span>張珮君、許琇喬、林悅如</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  
+
+ 
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    人機互動與智慧科技實驗室 · Lab for Human-Computer Interaction and Smart Technology · NKUST 資訊管理系
+    <div class="foot-links">
+      <a href="index.html">首頁</a><a href="achievements.html">研究成果</a><a href="faq.html">常見問題</a><a href="mailto:kwsu@nkust.edu.tw">聯絡信箱</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>
