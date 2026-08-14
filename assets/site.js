@@ -124,3 +124,89 @@ document.addEventListener('DOMContentLoaded', function(){
     });
   }*/
 });
+
+
+// 打開指定的 Modal
+function openModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.showModal();
+    // 防止背景頁面滾動
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+// 關閉指定的 Modal
+function closeModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.close();
+    document.body.style.overflow = '';
+  }
+}
+
+// 點擊彈窗外部黑色半透明遮罩時自動關閉
+document.querySelectorAll('.activity-modal').forEach(modal => {
+  modal.addEventListener('click', (e) => {
+    const rect = modal.getBoundingClientRect();
+    const isInDialog = (
+      rect.top <= e.clientY &&
+      e.clientY <= rect.top + rect.height &&
+      rect.left <= e.clientX &&
+      e.clientX <= rect.left + rect.width
+    );
+    if (!isInDialog) {
+      modal.close();
+      document.body.style.overflow = '';
+    }
+  });
+});
+
+let currentImageIndex = 0;
+let galleryImages = [];
+
+// 點擊縮圖打開全螢幕大圖
+function openLightbox(index) {
+  // 動態抓取當前開啟的彈窗內的所有相片
+  const images = document.querySelectorAll('#modal-aced2026 .modal-gallery img');
+  galleryImages = Array.from(images);
+  currentImageIndex = index;
+
+  updateLightboxView();
+  document.getElementById('image-lightbox').style.display = 'flex';
+}
+
+// 更新大圖內容與說明
+function updateLightboxView() {
+  const targetImg = galleryImages[currentImageIndex];
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+
+  lightboxImg.src = targetImg.src;
+  lightboxCaption.textContent = targetImg.alt || '';
+}
+
+// 切換上一張 / 下一張
+function changeImage(step, event) {
+  if (event) event.stopPropagation(); // 防止觸發背景關閉
+  
+  currentImageIndex = (currentImageIndex + step + galleryImages.length) % galleryImages.length;
+  updateLightboxView();
+}
+
+// 關閉大圖檢視器
+function closeLightbox(event) {
+  // 如果點擊的是圖片本體或按鈕，不觸發關閉
+  if (event && event.target.tagName === 'IMG') return;
+  document.getElementById('image-lightbox').style.display = 'none';
+}
+
+// 鍵盤快捷鍵支援：ESC 關閉、左右箭頭切換
+document.addEventListener('keydown', (e) => {
+  const lightbox = document.getElementById('image-lightbox');
+  if (lightbox.style.display === 'flex') {
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') changeImage(-1);
+    if (e.key === 'ArrowRight') changeImage(1);
+  }
+});

@@ -54,6 +54,56 @@
     <div class="wrap">
       <h2 class="section-title" id="activities-title" style="position:absolute;left:-9999px;">Activity List</h2>
       <div class="card-grid">
+	  
+		<!-- 原有的活動卡片（加入 onclick 打開彈窗） -->
+		<div class="media-card" onclick="openModal('modal-aced2026')">
+		  <div class="media-thumb">
+			<img src="images/photo/ACED_2026_6.jpg" alt="activities-9">
+		  </div>
+		  <div class="media-body">
+			<span class="n">2026.08</span>
+			<h4>The 5th Asian Conference on Ergonomics & Design (Singapore)</h4>
+			<p>The team presented research in Singapore and exchanged ideas with international ergonomics scholars.Congratulations! Prof. Kuo-Wei Su was elected President of the Asian Council on Ergonomics and Design.</p>
+		  </div>
+		</div>
+
+		<!-- 詳情與更多照片的彈窗 (Modal) -->
+		<dialog id="modal-aced2026" class="activity-modal">
+		  <div class="modal-content">
+			<!-- 關閉按鈕 -->
+			<button class="modal-close" onclick="closeModal('modal-aced2026')">&times;</button>
+			
+			<span class="n">2026.08</span>
+			<h2>The 5th Asian Conference on Ergonomics & Design (Singapore)</h2>
+			
+			<!-- 詳細文字說明 -->
+			<div class="modal-description">
+			  <p>The laboratory team traveled to Singapore to participate in the 5th Asian Conference on Ergonomics and Design (ACED), presenting research findings in ergonomics, intelligent interaction, and cognitive assessment.</p>
+			  <p>Special congratulations to <strong>Distinguished Professor Kuo-Wei Su</strong> on officially assuming <strong>the president of the Asian Society of Ergonomics and Design </strong> at this conference, promoting international academic collaboration and industry connections!</p>
+			</div>
+
+			<!-- 原相片集區塊：為圖片加入點擊事件與索引 -->
+			<div class="modal-gallery">
+			  <img src="images/photo/ACED_2026_6.jpg" alt="" onclick="openLightbox(0)">
+			  <img src="images/photo/ACED_2026_1.jpg" alt="" onclick="openLightbox(1)">
+			  <img src="images/photo/ACED_2026_2.jpg" alt="" onclick="openLightbox(2)">
+			  <img src="images/photo/ACED_2026_3.jpg" alt="" onclick="openLightbox(3)">
+			</div>
+
+			<!-- 全螢幕大圖檢視器 -->
+			<div id="image-lightbox" class="lightbox" onclick="closeLightbox(event)">
+			  <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+			  <button class="lightbox-prev" onclick="changeImage(-1, event)">&#10094;</button>
+			  
+			  <div class="lightbox-content">
+				<img id="lightbox-img" src="" alt="放大照片">
+				<div id="lightbox-caption"></div>
+			  </div>
+			  
+			  <button class="lightbox-next" onclick="changeImage(1, event)">&#10095;</button>
+			</div>
+		</dialog>
+	  
 	    <div class="media-card">
           <div class="media-thumb"><img src="images/photo/2026第33屆中華民國人因工程學會年會.jpg" alt="activities-1"></div>
           <div class="media-body">

@@ -54,8 +54,59 @@
     <div class="wrap">
       <h2 class="section-title" id="activities-title" style="position:absolute;left:-9999px;">活動列表</h2>
       <div class="card-grid">
+		
+		<!-- 原有的活動卡片（加入 onclick 打開彈窗） -->
+		<div class="media-card" onclick="openModal('modal-aced2026')">
+		  <div class="media-thumb">
+			<img src="images/photo/ACED_2026_6.jpg" alt="activities-9">
+		  </div>
+		  <div class="media-body">
+			<span class="n">2026.08</span>
+			<h4>第 5 屆亞洲人因工程與設計大會(新加坡)</h4>
+			<p>團隊赴新加坡發表研究成果，與國際人因工程學者交流，賀！蘇國瑋特聘教授接任亞洲人因工程與設計學會理事長。</p>
+		  </div>
+		</div>
+
+		<!-- 詳情與更多照片的彈窗 (Modal) -->
+		<dialog id="modal-aced2026" class="activity-modal">
+		  <div class="modal-content">
+			<!-- 關閉按鈕 -->
+			<button class="modal-close" onclick="closeModal('modal-aced2026')">&times;</button>
+			
+			<span class="n">2026.08</span>
+			<h2>第 5 屆亞洲人因工程與設計大會 (ACED 2026 - 新加坡)</h2>
+			
+			<!-- 詳細文字說明 -->
+			<div class="modal-description">
+			  <p>實驗室團隊前往新加坡參加第 5 屆亞洲人因工程與設計大會（ACED），發表人因工程、智慧互動與認知評估之研究成果。</p>
+			  <p>特別恭賀<strong>蘇國瑋特聘教授</strong>於本屆大會正式接任<strong>亞洲人因工程與設計學會理事長</strong>，促進跨國學術合作與產業連結！</p>
+			</div>
+
+			<!-- 原相片集區塊：為圖片加入點擊事件與索引 -->
+			<div class="modal-gallery">
+			  <img src="images/photo/ACED_2026_6.jpg" alt="" onclick="openLightbox(0)">
+			  <img src="images/photo/ACED_2026_1.jpg" alt="" onclick="openLightbox(1)">
+			  <img src="images/photo/ACED_2026_2.jpg" alt="" onclick="openLightbox(2)">
+			  <img src="images/photo/ACED_2026_3.jpg" alt="" onclick="openLightbox(3)">
+			</div>
+
+			<!-- 全螢幕大圖檢視器 -->
+			<div id="image-lightbox" class="lightbox" onclick="closeLightbox(event)">
+			  <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+			  <button class="lightbox-prev" onclick="changeImage(-1, event)">&#10094;</button>
+			  
+			  <div class="lightbox-content">
+				<img id="lightbox-img" src="" alt="放大照片">
+				<div id="lightbox-caption"></div>
+			  </div>
+			  
+			  <button class="lightbox-next" onclick="changeImage(1, event)">&#10095;</button>
+			</div>
+		</dialog>
+		
+		
 	    <div class="media-card">
-          <div class="media-thumb"><img src="images/photo/2026第33屆中華民國人因工程學會年會.jpg" alt="activities-1"></div>
+          <div class="media-thumb"><img src="images/photo/2026第33屆中華民國人因工程學會年會.jpg" alt="activities-8"></div>
           <div class="media-body">
             <span class="n">2026.03</span>
             <h4>第33屆中華民國人因工程學會年會暨學術研討會(中原大學)</h4>
@@ -63,7 +114,7 @@
           </div>
         </div>
 		<div class="media-card">
-          <div class="media-thumb"><img src="images/photo/20260319王惠嘉教授演講.jpg" alt="activities-2"></div>
+          <div class="media-thumb"><img src="images/photo/20260319王惠嘉教授演講.jpg" alt="activities-7"></div>
           <div class="media-body">
             <span class="n">2026.03</span>
             <h4>邀請國立成功大學 王惠嘉教授演講</h4>
@@ -71,7 +122,7 @@
           </div>
         </div>
 		<div class="media-card">
-          <div class="media-thumb"><img src="images/photo/實驗室期末聚餐-饗麻饗辣0108.jpg" alt="activities-3"></div>
+          <div class="media-thumb"><img src="images/photo/實驗室期末聚餐-饗麻饗辣0108.jpg" alt="activities-6"></div>
           <div class="media-body">
             <span class="n">2026.01</span>
             <h4>實驗室期末聚餐 饗麻饗辣</h4>
@@ -79,7 +130,7 @@
           </div>
         </div>
 		<div class="media-card">
-          <div class="media-thumb"><img src="images/photo/實驗室期末聚會20251203.jpg" alt="activities-4"></div>
+          <div class="media-thumb"><img src="images/photo/實驗室期末聚會20251203.jpg" alt="activities-5"></div>
           <div class="media-body">
             <span class="n">2025.12</span>
             <h4>實驗室期末聚會 享溫馨</h4>
@@ -87,7 +138,7 @@
           </div>
         </div>
         <div class="media-card">
-          <div class="media-thumb"><img src="images/photo/JES66日本人因研討會.png" alt="activities-5"></div>
+          <div class="media-thumb"><img src="images/photo/JES66日本人因研討會.png" alt="activities-4"></div>
           <div class="media-body">
             <span class="n">2025.05</span>
             <h4>第 66 屆日本人因工程學會年會</h4>
@@ -95,7 +146,7 @@
           </div>
         </div>
 		<div class="media-card">
-          <div class="media-thumb"><img src="images/photo/2025中國工業工程學會年會暨學術研討會.jpg" alt="activities-6"></div>
+          <div class="media-thumb"><img src="images/photo/2025中國工業工程學會年會暨學術研討會.jpg" alt="activities-3"></div>
           <div class="media-body">
             <span class="n">2025.11</span>
             <h4>2025中國工業工程學會年會暨學術研討會</h4>
@@ -103,7 +154,7 @@
           </div>
         </div>
         <div class="media-card">
-          <div class="media-thumb"><img src="images/photo/第32屆中華民國人因工程學會年會-1.png" alt="activities-7"></div>
+          <div class="media-thumb"><img src="images/photo/第32屆中華民國人因工程學會年會-1.png" alt="activities-2"></div>
           <div class="media-body">
             <span class="n">2025.03</span>
             <h4>第32屆中華民國人因工程學會年會暨學術研討會(虎尾科大)</h4>
@@ -111,7 +162,7 @@
           </div>
         </div>
         <div class="media-card">
-          <div class="media-thumb"><img src="images/photo/20240111擔任亞洲人因工程與設計協會副理事長.jpg" alt="activities-8"></div>
+          <div class="media-thumb"><img src="images/photo/20240111擔任亞洲人因工程與設計協會副理事長.jpg" alt="activities-1"></div>
           <div class="media-body">
             <span class="n">2024.01</span>
             <h4>傑出事蹟</h4>
