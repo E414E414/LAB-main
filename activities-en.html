@@ -90,19 +90,6 @@
         <img src="images/photo/實驗室期初聚會20261015(5).jpg" alt="" onclick="openLightbox(4)">
 			  <img src="images/photo/實驗室期初聚會20261015(6).jpg" alt="" onclick="openLightbox(5)">
 			</div>
-
-			<!-- 全螢幕大圖檢視器 -->
-			<div id="image-lightbox" class="lightbox" onclick="closeLightbox(event)">
-			  <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-			  <button class="lightbox-prev" onclick="changeImage(-1, event)">&#10094;</button>
-			  
-			  <div class="lightbox-content">
-				<img id="lightbox-img" src="" alt="放大照片">
-				<div id="lightbox-caption"></div>
-			  </div>
-			  
-			  <button class="lightbox-next" onclick="changeImage(1, event)">&#10095;</button>
-			</div>
 		</dialog>
 
 		<!-- 原有的活動卡片（加入 onclick 打開彈窗） -->
@@ -139,20 +126,20 @@
 			  <img src="images/photo/ACED_2026_2.jpg" alt="" onclick="openLightbox(2)">
 			  <img src="images/photo/ACED_2026_3.jpg" alt="" onclick="openLightbox(3)">
 			</div>
-
-			<!-- 全螢幕大圖檢視器 -->
-			<div id="image-lightbox" class="lightbox" onclick="closeLightbox(event)">
-			  <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-			  <button class="lightbox-prev" onclick="changeImage(-1, event)">&#10094;</button>
-			  
-			  <div class="lightbox-content">
-				<img id="lightbox-img" src="" alt="放大照片">
-				<div id="lightbox-caption"></div>
-			  </div>
-			  
-			  <button class="lightbox-next" onclick="changeImage(1, event)">&#10095;</button>
-			</div>
 		</dialog>
+
+    <!-- 共用的全螢幕大圖檢視器 -->    
+    <dialog id="image-lightbox" class="lightbox">
+      <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+      <button class="lightbox-prev" onclick="changeImage(-1, event)">&#10094;</button>
+
+      <div class="lightbox-content">
+        <img id="lightbox-img" src="" alt="放大照片">
+        <div id="lightbox-caption"></div>
+      </div>
+
+      <button class="lightbox-next" onclick="changeImage(1, event)">&#10095;</button>
+    </dialog>
 	  
 	    <div class="media-card">
           <div class="media-thumb"><img src="images/photo/2026第33屆中華民國人因工程學會年會.jpg" alt="activities-1"></div>
@@ -234,5 +221,37 @@
 </footer>
 
 <script src="assets/site.js"></script>
+<style>
+  /* 活動詳情彈窗 */
+.activity-modal {
+  z-index: 1000;
+}
+
+/* 全螢幕放大檢視器：置於活動彈窗最上層 */
+#image-lightbox {
+  position: fixed;
+  z-index: 2000;
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: rgba(0, 0, 0, 0.95);
+  color: white;
+  overflow: hidden;
+}
+
+#image-lightbox::backdrop {
+  background: rgba(0, 0, 0, 0.95);
+}
+
+#image-lightbox[open] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</style>
 </body>
 </html>
