@@ -163,62 +163,66 @@ document.querySelectorAll('.activity-modal').forEach(modal => {
 });
 
 
-
-
 let currentImageIndex = 0;
 let galleryImages = [];
 
-// 開啟全螢幕圖片
+// 點擊縮圖打開全螢幕大圖
 function openLightbox(index, clickedImg) {
-  if (!clickedImg) return;
+  // 如果 HTML 沒有傳入圖片，使用目前的點擊事件取得圖片
+  if (!clickedImg && window.event) {
+    clickedImg = window.event.currentTarget;
+  }
 
-  const modal = clickedImg.closest('.activity-modal');
-  const lightbox = document.getElementById('image-lightbox');
-
-  if (!modal || !lightbox) {
-    console.error('找不到活動彈窗或圖片檢視器');
+  if (!clickedImg) {
+    console.error('無法取得目前點擊的圖片');
     return;
   }
 
+  // 自動找到圖片所屬的活動彈窗
+  const modal = clickedImg.closest('.activity-modal');
+
+  if (!modal) {
+    console.error('找不到圖片所屬的活動彈窗');
+    return;
+  }
+
+  // 只讀取目前活動的照片
   galleryImages = Array.from(
     modal.querySelectorAll('.modal-gallery img')
   );
 
-  // 直接以實際點擊的圖片為準
-  const actualIndex = galleryImages.indexOf(clickedImg);
+  if (galleryImages.length === 0) return;
 
-  if (actualIndex === -1) {
-    console.error('找不到被點擊的圖片');
-    return;
+  // 依照實際點擊的圖片決定索引
+  currentImageIndex = galleryImages.indexOf(clickedImg);
+
+  if (currentImageIndex < 0) {
+    currentImageIndex = index || 0;
   }
 
-  currentImageIndex = actualIndex;
   updateLightboxView();
 
-  if (!lightbox.open) {
-    lightbox.showModal();
+  const lightbox = document.getElementById('image-lightbox');
+  if (lightbox) {
+    lightbox.style.display = 'flex';
   }
 }
 
-// 更新大圖與說明
+// 更新大圖
 function updateLightboxView() {
   if (!galleryImages.length) return;
 
-  const img = galleryImages[currentImageIndex];
+  const targetImg = galleryImages[currentImageIndex];
   const lightboxImg = document.getElementById('lightbox-img');
-  const caption = document.getElementById('lightbox-caption');
+  const lightboxCaption = document.getElementById('lightbox-caption');
 
-  if (lightboxImg) {
-    lightboxImg.src = img.src;
-    lightboxImg.alt = img.alt || '放大照片';
-  }
-
-  if (caption) {
-    caption.textContent = img.alt || '';
+  if (lightboxImg) lightboxImg.src = targetImg.src;
+  if (lightboxCaption) {
+    lightboxCaption.textContent = targetImg.alt || '';
   }
 }
 
-// 上一張、下一張
+// 切換上一張 / 下一張
 function changeImage(step, e) {
   if (e) e.stopPropagation();
   if (!galleryImages.length) return;
@@ -230,40 +234,27 @@ function changeImage(step, e) {
   updateLightboxView();
 }
 
-// 關閉圖片檢視器
-function closeLightbox() {
-  const lightbox = document.getElementById('image-lightbox');
+// 關閉大圖檢視器
+function closeLightbox(e) {
+  if (e) {
+    if (e.target.tagName === 'IMG') return;
 
-  if (lightbox && lightbox.open) {
-    lightbox.close();
+    if (e.target.closest('.lightbox-prev, .lightbox-next')) {
+      return;
+    }
   }
+
+  const lightbox = document.getElementById('image-lightbox');
+  if (lightbox) lightbox.style.display = 'none';
 }
 
-// 點擊圖片檢視器背景時關閉
-document.addEventListener('DOMContentLoaded', function () {
+// 鍵盤快捷鍵
+document.addEventListener('keydown', function(e) {
   const lightbox = document.getElementById('image-lightbox');
 
-  if (lightbox) {
-    lightbox.addEventListener('click', function (e) {
-      if (e.target === lightbox) {
-        closeLightbox();
-      }
-    });
+  if (lightbox && lightbox.style.display === 'flex') {
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') changeImage(-1);
+    if (e.key === 'ArrowRight') changeImage(1);
   }
 });
-
-// 鍵盤操作：左右切換、Esc 關閉
-document.addEventListener('keydown', function (e) {
-  const lightbox = document.getElementById('image-lightbox');
-
-  if (!lightbox || !lightbox.open) return;
-
-  if (e.key === 'ArrowLeft') {
-    changeImage(-1);
-  } else if (e.key === 'ArrowRight') {
-    changeImage(1);
-  } else if (e.key === 'Escape') {
-    closeLightbox();
-  }
-});
-
