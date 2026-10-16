@@ -172,31 +172,32 @@ let galleryImages = [];
 function openLightbox(index, clickedImg) {
   if (!clickedImg) return;
 
-  // 找出目前點擊圖片所屬的活動視窗
   const modal = clickedImg.closest('.activity-modal');
-  if (!modal) return;
+  const lightbox = document.getElementById('image-lightbox');
 
-  // 只取得目前活動視窗中的圖片
+  if (!modal || !lightbox) {
+    console.error('找不到活動彈窗或圖片檢視器');
+    return;
+  }
+
   galleryImages = Array.from(
     modal.querySelectorAll('.modal-gallery img')
   );
 
-  if (galleryImages.length === 0) return;
+  // 直接以實際點擊的圖片為準
+  const actualIndex = galleryImages.indexOf(clickedImg);
 
-  currentImageIndex = index;
-  updateLightboxView();
-
-  const lightbox = document.getElementById('image-lightbox');
-  if (!lightbox) return;
-
-  // 若原本已開啟，先關閉再重新開啟
-  if (lightbox.open) {
-    lightbox.close();
+  if (actualIndex === -1) {
+    console.error('找不到被點擊的圖片');
+    return;
   }
 
-  // 關鍵：使用 showModal() 開啟原生對話框，
-  // 讓圖片檢視器進入瀏覽器的最上層
-  lightbox.showModal();
+  currentImageIndex = actualIndex;
+  updateLightboxView();
+
+  if (!lightbox.open) {
+    lightbox.showModal();
+  }
 }
 
 // 更新大圖與說明
