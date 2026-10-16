@@ -164,38 +164,57 @@ document.querySelectorAll('.activity-modal').forEach(modal => {
 
 
 
+
 let currentImageIndex = 0;
 let galleryImages = [];
 
 // 開啟全螢幕圖片
 function openLightbox(index, clickedImg) {
+  if (!clickedImg) return;
+
+  // 找出目前點擊圖片所屬的活動視窗
   const modal = clickedImg.closest('.activity-modal');
   if (!modal) return;
 
+  // 只取得目前活動視窗中的圖片
   galleryImages = Array.from(
     modal.querySelectorAll('.modal-gallery img')
   );
 
-  if (!galleryImages.length) return;
+  if (galleryImages.length === 0) return;
 
   currentImageIndex = index;
   updateLightboxView();
 
   const lightbox = document.getElementById('image-lightbox');
+  if (!lightbox) return;
 
-  if (lightbox && !lightbox.open) {
-    lightbox.showModal();
+  // 若原本已開啟，先關閉再重新開啟
+  if (lightbox.open) {
+    lightbox.close();
   }
+
+  // 關鍵：使用 showModal() 開啟原生對話框，
+  // 讓圖片檢視器進入瀏覽器的最上層
+  lightbox.showModal();
 }
 
-// 更新大圖
+// 更新大圖與說明
 function updateLightboxView() {
   if (!galleryImages.length) return;
 
   const img = galleryImages[currentImageIndex];
+  const lightboxImg = document.getElementById('lightbox-img');
+  const caption = document.getElementById('lightbox-caption');
 
-  document.getElementById('lightbox-img').src = img.src;
-  document.getElementById('lightbox-caption').textContent = img.alt || '';
+  if (lightboxImg) {
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt || '放大照片';
+  }
+
+  if (caption) {
+    caption.textContent = img.alt || '';
+  }
 }
 
 // 上一張、下一張
@@ -204,12 +223,13 @@ function changeImage(step, e) {
   if (!galleryImages.length) return;
 
   currentImageIndex =
-    (currentImageIndex + step + galleryImages.length) % galleryImages.length;
+    (currentImageIndex + step + galleryImages.length) %
+    galleryImages.length;
 
   updateLightboxView();
 }
 
-// 關閉大圖
+// 關閉圖片檢視器
 function closeLightbox() {
   const lightbox = document.getElementById('image-lightbox');
 
@@ -218,12 +238,12 @@ function closeLightbox() {
   }
 }
 
-// 點擊背景關閉
-document.addEventListener('DOMContentLoaded', function() {
+// 點擊圖片檢視器背景時關閉
+document.addEventListener('DOMContentLoaded', function () {
   const lightbox = document.getElementById('image-lightbox');
 
   if (lightbox) {
-    lightbox.addEventListener('click', function(e) {
+    lightbox.addEventListener('click', function (e) {
       if (e.target === lightbox) {
         closeLightbox();
       }
@@ -231,13 +251,19 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// 鍵盤操作
-document.addEventListener('keydown', function(e) {
+// 鍵盤操作：左右切換、Esc 關閉
+document.addEventListener('keydown', function (e) {
   const lightbox = document.getElementById('image-lightbox');
 
   if (!lightbox || !lightbox.open) return;
 
-  if (e.key === 'ArrowLeft') changeImage(-1);
-  if (e.key === 'ArrowRight') changeImage(1);
+  if (e.key === 'ArrowLeft') {
+    changeImage(-1);
+  } else if (e.key === 'ArrowRight') {
+    changeImage(1);
+  } else if (e.key === 'Escape') {
+    closeLightbox();
+  }
 });
+
 
