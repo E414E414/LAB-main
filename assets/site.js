@@ -168,7 +168,7 @@ let galleryImages = [];
 // 點擊縮圖打開全螢幕大圖
 function openLightbox(index) {
   // 動態抓取當前開啟的彈窗內的所有相片
-  const images = document.querySelectorAll('#modal-aced2026 .modal-gallery img');
+  const images = document.querySelectorAll('#modal-ktv2026 .modal-aced2026 .modal-gallery img');
   galleryImages = Array.from(images);
   currentImageIndex = index;
 
