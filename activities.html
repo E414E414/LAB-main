@@ -90,19 +90,6 @@
         <img src="images/photo/實驗室期初聚會20261015(5).jpg" alt="" onclick="openLightbox(4)">
 			  <img src="images/photo/實驗室期初聚會20261015(6).jpg" alt="" onclick="openLightbox(5)">
 			</div>
-
-			<!-- 全螢幕大圖檢視器 -->
-			<div id="image-lightbox" class="lightbox" onclick="closeLightbox(event)">
-			  <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-			  <button class="lightbox-prev" onclick="changeImage(-1, event)">&#10094;</button>
-			  
-			  <div class="lightbox-content">
-				<img id="lightbox-img" src="" alt="放大照片">
-				<div id="lightbox-caption"></div>
-			  </div>
-			  
-			  <button class="lightbox-next" onclick="changeImage(1, event)">&#10095;</button>
-			</div>
 		</dialog>
 
 		<!-- 原有的活動卡片（加入 onclick 打開彈窗） -->
@@ -139,20 +126,23 @@
 			  <img src="images/photo/ACED_2026_2.jpg" alt="" onclick="openLightbox(2)">
 			  <img src="images/photo/ACED_2026_3.jpg" alt="" onclick="openLightbox(3)">
 			</div>
-
-			<!-- 全螢幕大圖檢視器 -->
-			<div id="image-lightbox" class="lightbox" onclick="closeLightbox(event)">
-			  <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-			  <button class="lightbox-prev" onclick="changeImage(-1, event)">&#10094;</button>
-			  
-			  <div class="lightbox-content">
-				<img id="lightbox-img" src="" alt="放大照片">
-				<div id="lightbox-caption"></div>
-			  </div>
-			  
-			  <button class="lightbox-next" onclick="changeImage(1, event)">&#10095;</button>
-			</div>
 		</dialog>
+
+    
+    <!-- A、B 活動共用的全螢幕大圖檢視器 -->
+    <div id="image-lightbox" class="lightbox" onclick="closeLightbox(event)">
+      <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+
+      <button class="lightbox-prev" onclick="changeImage(-1, event)">&#10094;</button>
+
+      <div class="lightbox-content">
+        <img id="lightbox-img" src="" alt="放大照片">
+        <div id="lightbox-caption"></div>
+      </div>
+
+      <button class="lightbox-next" onclick="changeImage(1, event)">&#10095;</button>
+    </div>
+
 		
 		
 	    <div class="media-card">
