@@ -127,23 +127,20 @@
 			  <img src="images/photo/ACED_2026_3.jpg" alt="" onclick="openLightbox(3)">
 			</div>
 		</dialog>
-
     
-    <!-- A、B 活動共用的全螢幕大圖檢視器 -->
-    <div id="image-lightbox" class="lightbox" onclick="closeLightbox(event)">
-      <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+    <!-- A、B 活動共用的全螢幕大圖檢視器 -->    
+  <dialog id="image-lightbox" class="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
 
-      <button class="lightbox-prev" onclick="changeImage(-1, event)">&#10094;</button>
+    <button class="lightbox-prev" onclick="changeImage(-1, event)">&#10094;</button>
 
-      <div class="lightbox-content">
-        <img id="lightbox-img" src="" alt="放大照片">
-        <div id="lightbox-caption"></div>
-      </div>
-
-      <button class="lightbox-next" onclick="changeImage(1, event)">&#10095;</button>
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="放大照片">
+      <div id="lightbox-caption"></div>
     </div>
 
-		
+    <button class="lightbox-next" onclick="changeImage(1, event)">&#10095;</button>
+  </dialog>
 		
 	    <div class="media-card">
           <div class="media-thumb"><img src="images/photo/2026第33屆中華民國人因工程學會年會.jpg" alt="activities-8"></div>
@@ -227,3 +224,29 @@
 <script src="assets/site.js"></script>
 </body>
 </html>
+
+
+dialog.lightbox {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: rgba(0, 0, 0, 0.95);
+  color: white;
+  align-items: center;
+  justify-content: center;
+}
+
+dialog.lightbox[open] {
+  display: flex;
+}
+
+dialog.lightbox::backdrop {
+  background: rgba(0, 0, 0, 0.95);
+}
+

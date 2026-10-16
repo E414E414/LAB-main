@@ -185,7 +185,9 @@ function openLightbox(index) {
   currentImageIndex = index;
   updateLightboxView();
 
-  document.getElementById('image-lightbox').style.display = 'flex';
+  const lightbox = document.getElementById('image-lightbox');
+  lightbox.style.display = 'flex';
+  lightbox.showModal();
 }
 
 // 更新大圖
@@ -221,7 +223,11 @@ function closeLightbox(e) {
     }
   }
 
-  document.getElementById('image-lightbox').style.display = 'none';
+  const lightbox = document.getElementById('image-lightbox');
+
+  if (lightbox.open) {
+    lightbox.close();
+  }
 }
 
 // 自動記錄最後開啟的活動彈窗
