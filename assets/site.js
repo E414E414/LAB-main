@@ -203,8 +203,12 @@ function openLightbox(index, clickedImg) {
   updateLightboxView();
 
   const lightbox = document.getElementById('image-lightbox');
+
   if (lightbox) {
-    lightbox.style.display = 'flex';
+    // 更新圖片後，使用 showModal() 開啟最上層視窗
+    if (!lightbox.open) {
+      lightbox.showModal();
+    }
   }
 }
 
@@ -245,15 +249,19 @@ function closeLightbox(e) {
   }
 
   const lightbox = document.getElementById('image-lightbox');
-  if (lightbox) lightbox.style.display = 'none';
+  if (lightbox && lightbox.open) {lightbox.close();}
 }
 
 // 鍵盤快捷鍵
 document.addEventListener('keydown', function(e) {
   const lightbox = document.getElementById('image-lightbox');
 
-  if (lightbox && lightbox.style.display === 'flex') {
-    if (e.key === 'Escape') closeLightbox();
+  if (lightbox && lightbox.open) {
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      closeLightbox();
+    }
+
     if (e.key === 'ArrowLeft') changeImage(-1);
     if (e.key === 'ArrowRight') changeImage(1);
   }

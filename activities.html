@@ -221,5 +221,37 @@
 </footer>
 
 <script src="assets/site.js"></script>
+<style>
+  /* 活動詳情彈窗 */
+.activity-modal {
+  z-index: 1000;
+}
+
+/* 全螢幕放大檢視器：置於活動彈窗最上層 */
+#image-lightbox {
+  position: fixed;
+  z-index: 2000;
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: rgba(0, 0, 0, 0.95);
+  color: white;
+  overflow: hidden;
+}
+
+#image-lightbox::backdrop {
+  background: rgba(0, 0, 0, 0.95);
+}
+
+#image-lightbox[open] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</style>
 </body>
 </html>
