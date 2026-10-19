@@ -92,6 +92,46 @@
 			</div>
 		</dialog>
 
+    <!-- 原有的活動卡片（加入 onclick 打開彈窗） -->
+		<div class="media-card" onclick="openModal('modal-ktv2026')">
+		  <div class="media-thumb">
+			<img src="images/photo/DHA20260918(1).jpg" alt="activities-9">
+		  </div>
+		  <div class="media-body">
+			  <span class="n">2026.09.18-20</span>
+        <h4>第 6 屆數位醫療與醫療數據分析國際研討會(高科大第一校區)</h4>
+        <p>實驗室團隊全程參與協助研討會各項引領接待與大小事宜。</p>
+      </div>
+		</div>
+
+		<!-- 詳情與更多照片的彈窗 (Modal) -->
+		<dialog id="modal-ktv2026" class="activity-modal">
+		  <div class="modal-content">
+			<!-- 關閉按鈕 -->
+			<button class="modal-close" onclick="closeModal('modal-ktv2026')">&times;</button>
+			
+			<span class="n">2026.09.18-20</span>
+			<h2>第 6 屆數位醫療與醫療數據分析國際研討會(高科大第一校區)</h2>
+			
+			<!-- 詳細文字說明 -->
+			<div class="modal-description">
+			  <p>實驗室團隊全程參與協助研討會各項引領接待與大小事宜。</p>
+			</div>
+
+			<!-- 原相片集區塊：為圖片加入點擊事件與索引 -->
+			<div class="modal-gallery">
+			  <img src="images/photo/DHA20260918(1).jpg" alt="" onclick="openLightbox(0,this)">
+			  <img src="images/photo/DHA20260918(2).jpg" alt="" onclick="openLightbox(1,this)">
+			  <img src="images/photo/DHA20260918(3).jpg" alt="" onclick="openLightbox(2,this)">
+			  <img src="images/photo/DHA20260918(4)待裁切.jpg" alt="" onclick="openLightbox(3,this)">
+        <img src="images/photo/DHA20260918(5)晚宴.jpg" alt="" onclick="openLightbox(4,this)">
+			  <img src="images/photo/DHA20260918(6)畫面模糊.png" alt="" onclick="openLightbox(5,this)">
+			</div>
+		</dialog>
+
+
+
+
 		<!-- 原有的活動卡片（加入 onclick 打開彈窗） -->
 		<div class="media-card" onclick="openModal('modal-aced2026')">
 		  <div class="media-thumb">
@@ -103,6 +143,9 @@
         <p>團隊赴新加坡發表研究成果，與國際人因工程學者交流，賀！蘇國瑋特聘教授接任亞洲人因工程與設計學會理事長。</p>
       </div>
 		</div>
+
+
+
 
 		<!-- 詳情與更多照片的彈窗 (Modal) -->
 		<dialog id="modal-aced2026" class="activity-modal">
