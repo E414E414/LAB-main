@@ -92,6 +92,43 @@
 			</div>
 		</dialog>
 
+        <!-- 原有的活動卡片（加入 onclick 打開彈窗） -->
+		<div class="media-card" onclick="openModal('modal-dha2026')">
+		  <div class="media-thumb">
+			<img src="images/photo/DHA20260918(1).jpg" alt="activities-9">
+		  </div>
+		  <div class="media-body">
+			  <span class="n">2026.09.18-20</span>
+        <h4>The 6th International Conference on Digital Healthcare and Medical Data Analysis (Kaohsiung Campus)</h4>
+        <p>The laboratory team participated throughout the conference, assisting with various arrangements and events.</p>
+      </div>
+		</div>
+
+		<!-- 詳情與更多照片的彈窗 (Modal) -->
+		<dialog id="modal-dha2026" class="activity-modal">
+		  <div class="modal-content">
+			<!-- 關閉按鈕 -->
+			<button class="modal-close" onclick="closeModal('modal-dha2026')">&times;</button>
+			
+			<span class="n">2026.09.18-20</span>
+			<h2>The 6th International Conference on Digital Healthcare and Medical Data Analysis (Kaohsiung Campus)</h2>
+			
+			<!-- 詳細文字說明 -->
+			<div class="modal-description">
+			  <p>The laboratory team participated throughout the conference, assisting with various arrangements and events.</p>
+			</div>
+
+			<!-- 原相片集區塊：為圖片加入點擊事件與索引 -->
+			<div class="modal-gallery">
+			  <img src="images/photo/DHA20260918(1).jpg" alt="" onclick="openLightbox(0,this)">
+			  <img src="images/photo/DHA20260918(2).jpg" alt="" onclick="openLightbox(1,this)">
+			  <img src="images/photo/DHA20260918(3).png" alt="" onclick="openLightbox(2,this)">
+			  <img src="images/photo/DHA20260918(4)待裁切.jpg" alt="" onclick="openLightbox(3,this)">
+        <img src="images/photo/DHA20260918(5)晚宴.jpg" alt="" onclick="openLightbox(4,this)">
+			  <img src="images/photo/DHA20260918(6)畫面模糊.png" alt="" onclick="openLightbox(5,this)">
+			</div>
+		</dialog>
+
 		<!-- 原有的活動卡片（加入 onclick 打開彈窗） -->
 		<div class="media-card" onclick="openModal('modal-aced2026')">
 		  <div class="media-thumb">
