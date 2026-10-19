@@ -168,7 +168,7 @@ let galleryImages = [];
 
 // 點擊縮圖打開全螢幕大圖
 function openLightbox(index, clickedImg) {
-  // 如果 HTML 沒有傳入圖片，使用目前的點擊事件取得圖片
+  // 取得目前被點擊的圖片
   if (!clickedImg && window.event) {
     clickedImg = window.event.currentTarget;
   }
@@ -178,7 +178,7 @@ function openLightbox(index, clickedImg) {
     return;
   }
 
-  // 自動找到圖片所屬的活動彈窗
+  // 找到圖片所屬的活動彈窗
   const modal = clickedImg.closest('.activity-modal');
 
   if (!modal) {
@@ -186,29 +186,35 @@ function openLightbox(index, clickedImg) {
     return;
   }
 
-  // 只讀取目前活動的照片
-  galleryImages = Array.from(
+  // 只讀取目前活動彈窗內的圖片
+  const images = Array.from(
     modal.querySelectorAll('.modal-gallery img')
   );
 
-  if (galleryImages.length === 0) return;
-
-  // 依照實際點擊的圖片決定索引
-  currentImageIndex = galleryImages.indexOf(clickedImg);
-
-  if (currentImageIndex < 0) {
-    currentImageIndex = index || 0;
+  if (images.length === 0) {
+    console.error('目前活動沒有可顯示的圖片');
+    return;
   }
 
+  // 更新目前相簿，避免沿用上一個活動的圖片
+  galleryImages = images;
+
+  // 根據實際點擊的圖片定位，不依賴其他相簿的索引
+  const clickedIndex = galleryImages.indexOf(clickedImg);
+
+  currentImageIndex =
+    clickedIndex >= 0
+      ? clickedIndex
+      : Math.max(0, Math.min(Number(index) || 0, galleryImages.length - 1));
+
+  // 更新放大圖片
   updateLightboxView();
 
+  // 開啟最上層的大圖檢視器
   const lightbox = document.getElementById('image-lightbox');
 
-  if (lightbox) {
-    // 更新圖片後，使用 showModal() 開啟最上層視窗
-    if (!lightbox.open) {
-      lightbox.showModal();
-    }
+  if (lightbox && !lightbox.open) {
+    lightbox.showModal();
   }
 }
 
